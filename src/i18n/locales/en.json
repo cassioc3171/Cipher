@@ -1,0 +1,709 @@
+{
+  "appName": "Cipher",
+  "tagline": "Military-grade encryption in your browser.",
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "continue": "Continue",
+    "save": "Save",
+    "delete": "Delete",
+    "remove": "Remove",
+    "change": "Change",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "share": "Share",
+    "more": "More",
+    "less": "Less",
+    "settings": "Settings",
+    "search": "Search",
+    "newChat": "New chat",
+    "loading": "Loading…",
+    "fullscreen": "Fullscreen",
+    "show": "Show",
+    "hide": "Hide",
+    "update": "Update",
+    "install": "Install",
+    "shuffle": "Shuffle",
+    "never": "Never",
+    "minutesShort": "{{count}}m",
+    "help": "Help",
+    "guide": "Guide"
+  },
+  "sidebar": {
+    "sessions": "Sessions",
+    "noSessionsYet": "Start encrypting to create a session.",
+    "endToEndNotice": "End-to-end · Browser-local only",
+    "eraseAllData": "Erase all data",
+    "closeSidebar": "Close sidebar",
+    "openSidebar": "Open sidebar",
+    "setAppPassword": "Set app password",
+    "lockApp": "Lock app",
+    "enableTemporary": "Enable temporary chat",
+    "disableTemporary": "Disable temporary chat",
+    "tempOn": "Temporary chat on",
+    "tempOff": "Temporary chat",
+    "chatOptions": "Chat options",
+    "pin": "Pin",
+    "unpin": "Unpin",
+    "rename": "Rename",
+    "about": "About",
+    "renameInput": "Rename chat",
+    "pinned": "Pinned",
+    "recent": "Recent",
+    "tempLabel": "Temporary",
+    "personalLabel": "Personal",
+    "pairedLabel": "Paired",
+    "msgsShort_one": "{{count}} msg",
+    "msgsShort_other": "{{count}} msgs"
+  },
+  "modes": {
+    "personal": "Personal",
+    "paired": "Paired",
+    "securityMode": "Security mode"
+  },
+  "composer": {
+    "placeholder": "Type a message…",
+    "pressToDecrypt": "Press send to decrypt…",
+    "encryptAndSend": "Encrypt & send",
+    "decrypt": "Decrypt",
+    "obfuscation": "Obfuscation mode",
+    "directionAuto": "Direction: Auto",
+    "directionEncrypt": "Direction: forced Encrypt",
+    "directionDecrypt": "Direction: forced Decrypt",
+    "attachFile": "Attach file",
+    "addFromGallery": "Add from gallery",
+    "recordVoice": "Record voice message",
+    "stopRecording": "Stop recording",
+    "dropFileHere": "Drop file here",
+    "hideInImage": "Hide in image (PNG/BMP)",
+    "hideInAudio": "Hide in audio (WAV)",
+    "cover": "COVER",
+    "carrier": "CARRIER",
+    "coverPlaceholder": "Type cover text…",
+    "tapToEdit": "Tap to edit cover text",
+    "shuffleOrTapHint": "Shuffle or tap to edit cover text",
+    "shuffle": "Shuffle",
+    "spectrumLabel": "Spectrum cover selector",
+    "spectrumValueText": "{{percent}} percent",
+    "chooseSendAction": "Choose send action",
+    "cancelCompress": "Cancel compression",
+    "compressing": "Compressing…",
+    "qrOverCapacity": "Text exceeds QR capacity",
+    "replace": "Replace"
+  },
+  "password": {
+    "placeholder": "Password",
+    "paste": "Paste password from clipboard",
+    "copy": "Copy password",
+    "clear": "Clear password",
+    "generate": "Generate random password",
+    "locked": "Password locked",
+    "reveal": "Reveal password for 3 seconds",
+    "hide": "Hide password",
+    "appPassword": "App Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "confirmNewPassword": "Confirm New Password",
+    "tooShort": "Password must be at least 4 characters.",
+    "doNotMatch": "Passwords do not match.",
+    "wrongAppPassword": "Wrong app password.",
+    "currentWrong": "Current app password is wrong.",
+    "weakLabel": "Weak",
+    "tooShortLabel": "Too short",
+    "show": "Show",
+    "hideAria": "Hide",
+    "revealShort": "Reveal password (3s)"
+  },
+  "appLock": {
+    "title": "Cipher",
+    "enterToUnlock": "Enter your App Password to unlock.",
+    "unlock": "Unlock",
+    "unlocking": "Unlocking…",
+    "restoring": "Restoring your secure session…",
+    "warningTitle": "Warning",
+    "warningTitleEmoji": "⚠️ Warning",
+    "warningBody": "Setting an app password will encrypt all your local data on this browser.",
+    "warningBodyStrong": "If you forget this password, all data will be lost forever and cannot be recovered.",
+    "iUnderstand": "I Understand",
+    "setAppPassword": "Set App Password",
+    "setupExplain": "This password encrypts all local data for this browser session.",
+    "setPassword": "Set Password",
+    "settingUp": "Setting up…",
+    "changeAppPassword": "Change App Password",
+    "changingPassword": "Changing…",
+    "removeAppPassword": "Remove App Password",
+    "removingPassword": "Removing…",
+    "enterPassword": "Enter Password",
+    "unlockChat": "Unlock Chat",
+    "chatPwNotInMem": "This chat uses a personal password that is no longer in memory.",
+    "changeExplain": "Re-encrypts all saved secrets with the new app password.",
+    "removeWarnPrefix": "All secrets will be stored",
+    "removeWarnEmphasis": "unencrypted",
+    "removeWarnSuffix": "in your browser. This cannot be undone.",
+    "changedToast": "App password changed.",
+    "removedToast": "App password removed.",
+    "modalUnlockChatLabel": "Unlock chat password",
+    "modalWarningLabel": "App password warning",
+    "modalSetLabel": "Set app password",
+    "modalChangeLabel": "Change app password",
+    "modalRemoveLabel": "Remove app password"
+  },
+  "paired": {
+    "selectOrCreate": "Select or create paired chat",
+    "step1Title": "Name this chat",
+    "step1Hint": "Pick a name your friend will recognise.",
+    "step2Title": "Share your code",
+    "step2Hint": "Copy this code and send it to your friend via any messenger.",
+    "step3Title": "Paste friend's code",
+    "step3Hint": "Ask your friend to send you their code, then paste it below.",
+    "namePlaceholder": "e.g. Ali, Support Team…",
+    "friendCode": "Friend code",
+    "friendCodePlaceholder": "Paste friend's code here",
+    "paste": "Paste",
+    "camera": "Camera",
+    "upload": "Upload",
+    "scanQrTitle": "Scan friend code QR with camera",
+    "stopScanner": "Stop",
+    "qrCode": "QR Code",
+    "hideQr": "Hide QR",
+    "sendToFriend": "Send to friend",
+    "perChatNotice": "Each sidebar chat keeps its own paired setup for different people.",
+    "clipboardDenied": "Clipboard access denied. Use Upload or allow clipboard permissions.",
+    "step2Reminder": "Now send this code to your friend via any messenger",
+    "sentBadge": "Sent",
+    "receivedBadge": "Received",
+    "importImageQ": "Use this image as your friend's code and try to read its QR now?",
+    "importImageYes": "Yes, import code",
+    "importImageNo": "No",
+    "next": "Next",
+    "done": "Done",
+    "advanced": "Advanced",
+    "qrAlt": "Public key QR",
+    "generatingKey": "Generating key…",
+    "yourPublicKey": "Your public key (derived from words above):",
+    "mnemonicHint": "Save these 12 words somewhere safe. You can use them to restore your key later.",
+    "generateNewWords": "Generate new words",
+    "pairedReadyBanner": "Paired chat ready — end-to-end encrypted",
+    "pairedActive": "Paired",
+    "noPairedYet": "No paired chats yet",
+    "selectPaired": "Select paired chat",
+    "pairedName": "Paired chat name",
+    "setupRegion": "Paired setup",
+    "confirmClipboardImport": "Confirm clipboard image import",
+    "clipboardPreviewAlt": "Clipboard preview"
+  },
+  "obfuscation": {
+    "title": "Obfuscation",
+    "standard": "Standard",
+    "standardDesc": "Plain encrypted text output",
+    "emoji": "Emoji",
+    "emojiDesc": "Looks like an emoji sequence",
+    "persian": "Persian",
+    "persianDesc": "Looks like Persian text",
+    "steg": "Steg",
+    "stegDesc": "Hidden inside cover text or media",
+    "stegInsideCarrier": "Hidden inside carrier media",
+    "qr": "QR Code",
+    "qrDesc": "Scannable QR image",
+    "noise": "Noise",
+    "noiseDesc": "Audio file of pure noise",
+    "snow": "Snow",
+    "snowDesc": "Image file of TV-static snow"
+  },
+  "messages": {
+    "encrypted": "Encrypted",
+    "decrypted": "Decrypted",
+    "loadOlder": "Load older messages",
+    "loadingOlder": "Loading…",
+    "encryptedFile": "Encrypted file",
+    "decryptedFile": "Decrypted file",
+    "snowEncoded": "Snow encoded",
+    "noiseEncoded": "Noise encoded",
+    "docWarning": "Send as a document — do not compress or the data will be lost",
+    "actionCopy": "Copy",
+    "actionCopied": "Copied",
+    "actionMore": "More",
+    "actionLess": "Less",
+    "actionDownload": "Download",
+    "actionDownloadText": "Download as text",
+    "actionFullscreen": "Fullscreen",
+    "actionShare": "Share",
+    "copyQrImg": "Copy QR image",
+    "copyEncFile": "Copy encrypted file"
+  },
+  "welcome": {
+    "body": "Type a message and encrypt it. A new session will be created automatically.",
+    "tempTitle": "Temporary chat",
+    "tempBody": "This chat won't be saved. It will disappear when you refresh or close the page.",
+    "ephemeralBanner": "Temporary chat — nothing is saved. This session will disappear on refresh."
+  },
+  "settings": {
+    "title": "Settings",
+    "closeSettings": "Close settings",
+    "appearance": "Appearance",
+    "coverTextDataset": "Cover Text Dataset",
+    "coverTextDesc": "Text pools used as disguise in Steg mode.",
+    "appPassword": "App Password",
+    "about": "About",
+    "dangerZone": "Danger Zone",
+    "supportCipher": "Support Cipher",
+    "supportTagline": "Cipher is free & open-source. Your support keeps it alive.",
+    "buyCoffee": "Buy Me a Coffee",
+    "enableAll": "Enable all",
+    "disableAll": "Disable all",
+    "advancedMode": "Advanced Mode",
+    "advancedModeDesc": "Shows mnemonic seed backup in Paired setup and force encrypt/decrypt override",
+    "toggleAdvanced": "Toggle advanced mode",
+    "autoDeleteTimer": "Auto-Delete Timer",
+    "autoDeleteDesc": "Automatically purge all chat messages older than the chosen duration",
+    "toggleAutoDelete": "Toggle auto-delete",
+    "autoDeleteWarning": "Messages older than the selected time will be permanently deleted on every page load. This cannot be undone.",
+    "autoLockTimer": "Auto-Lock Timer",
+    "autoLockDesc": "Lock the app after a period of inactivity",
+    "appPasswordActive": "Active — AES-256-GCM via PBKDF2 (600k iterations).",
+    "appPasswordNone": "No app password. Secrets are stored unencrypted.",
+    "aboutVersion": "v2.0",
+    "aboutTagline": "Communicate privately — even on insecure channels.",
+    "aboutEnc": "AES-256-GCM encryption with PBKDF2 key derivation (600k iterations).",
+    "aboutOffline": "100% offline. No servers, no tracking, no accounts. Your data never leaves your device.",
+    "aboutDisguise": "Disguise encrypted output as emoji, Persian poetry, steganographic cover text, QR codes, audio noise, or snow images.",
+    "aboutMedia": "Supports text, voice, file, and image encryption with optional ECC paired sessions.",
+    "aboutLicense": "Open-source · MIT License",
+    "deleteAllConfirmText": "This will clear all chats, history, and settings. This cannot be undone.",
+    "deleteAllConfirmBtn": "Confirm Delete",
+    "supportMessage": "Cipher is free, open-source, and runs with zero servers. If it's useful to you, consider buying me a coffee to keep development going.",
+    "supportFooter": "Every contribution — no matter how small — makes a difference. Thank you!",
+    "durations": {
+      "1h": "1 hour",
+      "6h": "6 hours",
+      "24h": "24 hours",
+      "7d": "7 days",
+      "30d": "30 days"
+    },
+    "deleteAllData": "Delete All Data",
+    "language": "Language",
+    "languageDesc": "Choose the language for the interface.",
+    "help": "Help & Guide",
+    "helpDesc": "Open the in-app guide — quick start, modes, paired chats, security, and FAQ."
+  },
+  "topbar": {
+    "supportToggle": "Toggle support panel",
+    "supportTitle": "Support us",
+    "exitRetro": "Exit Retro Mode",
+    "exitRetroAria": "Exit retro mode"
+  },
+  "pwa": {
+    "offline": "You're offline — encryption still works",
+    "updateAvailable": "A new version is available",
+    "updateBtn": "Update",
+    "install": "Install",
+    "installApp": "Install Cipher app"
+  },
+  "lightbox": {
+    "label": "Image preview (click outside or press Escape to close)",
+    "close": "Close image preview",
+    "alt": "Enlarged preview"
+  },
+  "erase": {
+    "title": "Erase all data?",
+    "body": "This will permanently delete all your chats, keys, and encrypted data from this browser. This action cannot be undone.",
+    "sureTitle": "Are you absolutely sure?",
+    "sureBody": "You are about to delete {{chatCount}} containing {{msgCount}}, all encryption keys, and all locally stored data. There is no recovery.",
+    "chats_one": "{{count}} chat",
+    "chats_other": "{{count}} chats",
+    "messages_one": "{{count}} message",
+    "messages_other": "{{count}} messages",
+    "confirm": "Yes, erase everything"
+  },
+  "deleteChat": {
+    "title": "Delete this chat?",
+    "body": "\"{{name}}\" and all of its {{msgCount}} will be permanently removed from this browser. This cannot be undone.",
+    "confirm": "Delete chat"
+  },
+  "tutorial": {
+    "prev": "Previous",
+    "next": "Next",
+    "finish": "Finish",
+    "close": "Close tutorial",
+    "nudgeTitle": "Try the 2-minute walkthrough",
+    "nudgeDesc": "Encrypt and decrypt your first message step by step.",
+    "nudgeCta": "Start",
+    "nudgeDismiss": "Dismiss",
+    "hintClick": "Click the highlighted button",
+    "hintType": "Type into the highlighted field",
+    "hintNext": "Press Next to continue",
+    "scenariosTitle": "Walkthroughs",
+    "scenariosIntro": "Hands-on tutorials. Each one drives the real UI — when you click, the tutorial advances.",
+    "startScenario": "Start",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} mins",
+    "scenarios": {
+      "encryptSimple": {
+        "title": "Encrypt a simple message",
+        "summary": "Set a password, type a sentence, encrypt it, copy the result, paste it back, decrypt. Round-trip in 8 steps.",
+        "steps": {
+          "passwordField": {
+            "title": "Set a password",
+            "body": "Personal mode encrypts with a password you share with one person — the simplest way to start. Type at least 4 characters here. The 🎲 button makes a strong random one, 📋 pastes from your clipboard, and ✕ clears. Both sides need the same password to read the message."
+          },
+          "openObf": {
+            "title": "Choose how the output looks",
+            "body": "All modes use the same encryption — they differ only in what the output looks like. Tap this button to open the picker."
+          },
+          "pickStandard": {
+            "title": "Pick Standard",
+            "body": "Standard is plain ciphertext — smallest output, no disguise. Other modes wrap it in emoji, Persian prose, QR images, or steg covers. Tap Standard to use it for this walkthrough."
+          },
+          "typeMessage": {
+            "title": "Type your message",
+            "body": "Anything — \"hello from cipher\" works. This is the text that gets encrypted. Aim for at least a few characters."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt & send",
+            "body": "Tap Encrypt. Cipher derives a key from your password (AES-256-GCM via PBKDF2, 600k iterations) and turns your message into unreadable text."
+          },
+          "pressCopy": {
+            "title": "Here's the ciphertext — copy it",
+            "body": "This is what you'd paste into WhatsApp, email, or anywhere else — without the password it reveals nothing about the original. Tap Copy to put it on your clipboard."
+          },
+          "pasteBack": {
+            "title": "Paste it into the composer",
+            "body": "Cipher detects the cipher format automatically and switches the send button into Decrypt. Paste the text you just copied."
+          },
+          "pressDecrypt": {
+            "title": "Decrypt — and you're done",
+            "body": "Tap Decrypt. Same password in, same message out. That's the whole round-trip. Try the Emoji or Steg walkthroughs next when you want to change how the output looks."
+          }
+        }
+      },
+      "encryptImage": {
+        "title": "Encrypt an image",
+        "summary": "Attach any picture from your device and Cipher wraps it in an encrypted file the recipient unlocks with the same password. 4 steps.",
+        "steps": {
+          "attachImage": {
+            "title": "Attach an image",
+            "body": "Tap the paperclip and pick any image — photo, screenshot, drawing. Cipher encrypts it on this device before it leaves. Next will light up as soon as the file appears in the composer."
+          },
+          "typeCaption": {
+            "title": "(Optional) add a caption",
+            "body": "Type a short note next to the image, or skip and tap Next. The caption gets encrypted alongside the image."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt & send",
+            "body": "Tap to encrypt. Cipher AES-encrypts the bytes of the image — even its file name and size are protected — and produces a single encrypted file."
+          },
+          "lookFile": {
+            "title": "Here's the encrypted file",
+            "body": "Download or share this file with anyone. They paste it back into Cipher with the same password to see your image."
+          }
+        }
+      },
+      "pairedSetup": {
+        "title": "Set up a Paired chat",
+        "summary": "Exchange a one-time public code with a friend and from then on every message is encrypted automatically — no shared password. We'll show you the flow using a sample code. 7 steps.",
+        "steps": {
+          "nameTheChat": {
+            "title": "Name this chat",
+            "body": "Pick a label only you'll see — something that helps you remember who's on the other end (e.g. 'Ali')."
+          },
+          "confirmName": {
+            "title": "Confirm the name",
+            "body": "Tap Next. Cipher locks in the name and moves to the key exchange."
+          },
+          "copyMyCode": {
+            "title": "Copy your public code",
+            "body": "Tap Copy. This is your one-time public key — share it with your friend through any messenger. They paste this into their own Cipher to pair with you."
+          },
+          "pasteFriendCode": {
+            "title": "Paste your friend's code",
+            "body": "Your friend would send theirs the same way. To demo the flow we've pre-filled the field with a fresh sample code. Tap Next when you're ready."
+          },
+          "confirmPairing": {
+            "title": "Confirm the pairing",
+            "body": "Tap Done. Cipher derives a shared key using ECDH on P-256 — neither code by itself was enough; the two together produce a secret nobody else has."
+          },
+          "typeMessage": {
+            "title": "Type a message",
+            "body": "Notice there's no password field — Cipher uses the pair-derived key automatically."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt without a password",
+            "body": "Tap to encrypt. The output is readable only by someone holding the matching private key for the code your friend gave you."
+          }
+        }
+      },
+      "setAppPassword": {
+        "title": "Set the app password",
+        "summary": "An optional master password that encrypts every locally-stored secret. If you forget it, your stored data is unrecoverable — by you, by anyone. 4 steps.",
+        "steps": {
+          "openLockBtn": {
+            "title": "Open the lock button",
+            "body": "It lives in the sidebar header next to the logo. Tap to start the app-password setup."
+          },
+          "acknowledgeWarning": {
+            "title": "Read the warning",
+            "body": "Tap I Understand. Setting an app password encrypts every chat, key, and obfuscation setting on this browser. If you forget the password later, you cannot recover the data."
+          },
+          "typeNewPassword": {
+            "title": "Pick a strong password",
+            "body": "At least 4 characters. Pick something you'll remember — there's no reset link, no recovery email, no support to call."
+          },
+          "pressSave": {
+            "title": "Save — this is real",
+            "body": "Tap Set Password. From now on this browser asks for the app password on every visit. You can change or remove it later from Settings → App Password."
+          }
+        }
+      },
+      "encryptSteg": {
+        "title": "Hide a message inside cover text",
+        "summary": "Wraps the ciphertext in invisible characters embedded in a normal-looking sentence — the cover text is real, the secret lives in the gaps. 7 steps.",
+        "steps": {
+          "openObf": {
+            "title": "Open the obfuscation picker",
+            "body": "Tap the mode chip in the composer toolbar to see every way Cipher can disguise its output."
+          },
+          "pickSteg": {
+            "title": "Pick Steg",
+            "body": "Steg hides your encrypted text inside a normal cover sentence. To anyone scrolling past, the message looks like a quote or proverb — the secret is encoded in invisible Unicode characters between the visible ones."
+          },
+          "lookAtCover": {
+            "title": "This is the cover text",
+            "body": "Cipher ships thousands of cover phrases (poems, proverbs, recipes, neutral prose). Each one looks completely innocuous. The slider picks where in the spectrum to draw from."
+          },
+          "rollCover": {
+            "title": "Try a different cover",
+            "body": "Tap shuffle to get a fresh cover sentence. Keep tapping until you find one that fits the channel you're sending through."
+          },
+          "typeMessage": {
+            "title": "Type your secret",
+            "body": "This is the message that will hide inside the cover. Keep it short — Steg's capacity is limited by the cover's length."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt & send",
+            "body": "Tap to encrypt. Cipher folds your message into the cover using zero-width characters. The result looks like the cover sentence but carries your secret inside."
+          },
+          "lookSteg": {
+            "title": "That's your steg message",
+            "body": "Send this exact text wherever you like — it'll look like a normal sentence to anyone watching. Anyone with the password can paste it back into Cipher to reveal the hidden message."
+          }
+        }
+      },
+      "encryptQR": {
+        "title": "Send a QR-coded message",
+        "summary": "Output is a scannable QR image — perfect for in-person hand-offs, screen sharing, or printing. 5 steps.",
+        "steps": {
+          "openObf": {
+            "title": "Open the obfuscation picker",
+            "body": "Tap the mode chip in the composer toolbar."
+          },
+          "pickQR": {
+            "title": "Pick QR Code",
+            "body": "QR turns your encrypted message into a scannable image. Great when the receiver is sitting next to you, or sharing a screen."
+          },
+          "typeMessage": {
+            "title": "Type your message",
+            "body": "QR has a capacity ceiling around ~2 KB. Keep messages short to avoid hitting it — Cipher will warn if you cross the limit."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt & send",
+            "body": "Tap to encrypt. Cipher renders your message as a QR image that any camera or QR scanner can read."
+          },
+          "lookQR": {
+            "title": "That's your scannable QR",
+            "body": "Show this on your screen, send it as an image, or print it. Anyone with the password can scan or paste it into Cipher to recover the original message."
+          }
+        }
+      },
+      "encryptEmoji": {
+        "title": "Send an emoji-disguised message",
+        "summary": "Same encryption as Standard, but the output looks like a stream of emoji — slips past channels that flag random-looking text. 5 steps.",
+        "steps": {
+          "openObf": {
+            "title": "Open the obfuscation picker",
+            "body": "Tap the mode chip in the composer toolbar. The picker shows every way Cipher can disguise its output. (We've set a sample password for you so you can focus on the disguise.)"
+          },
+          "pickEmoji": {
+            "title": "Pick Emoji",
+            "body": "Emoji wraps the ciphertext as a stream of small images — same encryption underneath, just dressed up so it looks innocuous in a chat window."
+          },
+          "typeMessage": {
+            "title": "Type something short",
+            "body": "Emoji mode is about 2× the size of Standard, so keep it brief. \"meet at 6\" works."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt & send",
+            "body": "Tap to encrypt. Cipher turns your text into a sequence of emoji that any messenger will accept as a normal Unicode message."
+          },
+          "lookEmoji": {
+            "title": "That's your disguised message",
+            "body": "Send this exact emoji sequence wherever you like. Anyone with the password can paste it back into Cipher and read the original."
+          }
+        }
+      },
+      "stegCarrierImage": {
+        "title": "Hide a message in an image",
+        "summary": "Enable Steg mode, choose a PNG photo as your carrier, type your secret. Cipher embeds the ciphertext in the image pixels — the picture looks identical to the original. 6 steps.",
+        "steps": {
+          "openObf": {
+            "title": "Open the mode picker",
+            "body": "Tap the mode button to see every output style. All modes use the same AES-256-GCM encryption — they differ only in what the output looks like."
+          },
+          "pickSteg": {
+            "title": "Pick Steg mode",
+            "body": "Steg mode hides your encrypted message inside a carrier file. Select it to reveal the carrier controls at the top of the composer."
+          },
+          "pickImageCarrier": {
+            "title": "Choose a PNG carrier image",
+            "body": "Tap the 🖼 image button and pick any PNG or BMP photo from your device. The file must be lossless — JPEG compression would destroy the hidden bits. Larger images hold more data. Tap Next once the file chip appears."
+          },
+          "typeMessage": {
+            "title": "Type your secret message",
+            "body": "Type the text you want to hide. Cipher compresses it automatically before encryption — short messages fit comfortably inside typical photos. The size indicator shows how much of the carrier capacity your message uses. Tip: for long messages, choose a high-resolution image."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt & embed",
+            "body": "Tap Encrypt. Cipher encrypts your message with AES-256-GCM, then writes each bit of the ciphertext into the least-significant bit of the image's R, G, and B color channels — 6 bits per pixel. The visual difference is invisible to the human eye."
+          },
+          "lookResult": {
+            "title": "Your carrier image is ready",
+            "body": "Download or share the PNG through any image channel — messaging apps, email, social media. The recipient opens Cipher, picks Steg mode, taps the image carrier button, selects this PNG, and decrypts with the same password. To anyone else, it is just a normal photo."
+          }
+        }
+      },
+      "stegCarrierAudio": {
+        "title": "Hide a message in audio",
+        "summary": "Enable Steg mode, choose a WAV recording as your carrier, type your secret. Cipher embeds the ciphertext in the audio samples — the file sounds identical to the original. 6 steps.",
+        "steps": {
+          "openObf": {
+            "title": "Open the mode picker",
+            "body": "Tap the mode button to open the picker. All modes use the same encryption — they differ only in the output format."
+          },
+          "pickSteg": {
+            "title": "Pick Steg mode",
+            "body": "Steg mode hides your encrypted message inside a carrier file. Select it to reveal the carrier controls."
+          },
+          "pickAudioCarrier": {
+            "title": "Choose a WAV carrier",
+            "body": "Tap the 🔊 audio button and pick a WAV file. WAV is a lossless format — MP3 or AAC would destroy the hidden bits during compression. Longer recordings hold more data: a 1-minute mono WAV at 44.1 kHz holds roughly 650 KB. Tap Next once the file chip appears."
+          },
+          "typeMessage": {
+            "title": "Type your secret message",
+            "body": "Type the text to hide. Cipher compresses it, encrypts it with AES-256-GCM, then writes each bit into the least-significant bit of one audio sample in channel 0 — a change of 1 in 32,768, completely inaudible."
+          },
+          "pressEncrypt": {
+            "title": "Encrypt & embed",
+            "body": "Tap Encrypt. Cipher embeds the ciphertext in the audio samples. The output is a WAV file that sounds exactly like the original recording when played."
+          },
+          "lookResult": {
+            "title": "Your carrier audio is ready",
+            "body": "Download the WAV and share it as a voice message or file attachment. The recipient opens Cipher, picks Steg mode, taps the audio carrier button, selects the WAV, and decrypts with the same password. The recording sounds completely normal to anyone who plays it."
+          }
+        }
+      }
+    }
+  },
+  "guide": {
+    "openGuide": "Open guide",
+    "closeGuide": "Close guide",
+    "title": "How Cipher works",
+    "subtitle": "A short, honest tour of every feature.",
+    "tocLabel": "Sections",
+    "articles": {
+      "gettingStarted": {
+        "title": "Quick start",
+        "body": "Pick a password. Type a message. Tap send. Cipher turns your message into encrypted text. Send that text to anyone through any app — SMS, WhatsApp, email, paper. They paste it back into Cipher, enter the same password, and read the original. Without the password the text is unreadable, even to someone holding the full ciphertext."
+      },
+      "modes": {
+        "title": "Encryption & obfuscation modes",
+        "body": "All seven modes use the same encryption (AES-256-GCM). They differ only in how the encrypted output looks, so you can pick one that survives the channel you're sending it through.",
+        "items": {
+          "standard": "Standard — plain Base64-looking ciphertext. Smallest output. Best for email or any app that does not strip long strings.",
+          "emoji": "Emoji — encodes the ciphertext as an emoji stream. Survives apps that strip non-text but allow Unicode. Roughly 2× larger than Standard.",
+          "persian": "Persian — disguises the output as Persian prose. Looks like a normal message, slips past keyword filters that flag random-looking text. Text-only.",
+          "steg": "Steg (text) — hides the message inside an innocent-looking cover sentence using invisible characters. The cover text is real; the secret is in the gaps.",
+          "stegCarrier": "Steg (image / audio) — embeds the ciphertext into the pixels of a PNG image or samples of a WAV file. The carrier file plays / displays normally.",
+          "qr": "QR Code — outputs a scannable QR image. Good when both sides are physically near each other or sharing screens.",
+          "noise": "Noise — encodes ciphertext as a WAV file that sounds like static. Bypasses most text filters; useful inside voice-message channels.",
+          "snow": "Snow — encodes ciphertext as a PNG that looks like TV static. Same idea as Noise but for image channels."
+        }
+      },
+      "paired": {
+        "title": "Locked just for you and one friend",
+        "body": "Pick one friend. Once you both tap 'pair', your messages with them get their own secret lock that only the two of you can open. You never share a password — your phones do the hard work.",
+        "example": "Worked example. You and your Sister both open Cipher and create a new paired chat. You name yours “Sister”; she names hers “You”.\n\nHow it works — the color-mixing analogy: Imagine you both agree on a public starting color, say Yellow. You secretly mix in your Red → you get Orange, and share only the Orange. Your Sister secretly mixes in her Blue → she gets Green, and shares only the Green. Now: you take her Green and add your secret Red → Brown. She takes your Orange and adds her secret Blue → Brown. You both arrive at the same secret Brown without either of you ever revealing Red or Blue. That is exactly how Cipher pairs your devices — but with elliptic-curve math on P-256 instead of paint.\n\nBack to the app: each device generates a one-time public code (the Orange or Green above). Exchange these codes any way you like — SMS, WhatsApp, paper. Paste each other’s code into Cipher. Done — both devices now share a secret key that never travelled the network. All future messages encrypt exclusively for each other’s device; the codes you exchanged are public and intercepting them does not break the chat.",
+        "highlights": [
+          "one friend",
+          "secret lock",
+          "your phones do the hard work"
+        ]
+      },
+      "security": {
+        "title": "Security",
+        "body": "Cipher is open-source under the MIT license — anyone can read the code and verify it does what it claims. It runs entirely in your browser: no account, no server, no logs. After the first load it works fully offline — you can disable your network and Cipher keeps encrypting. Encryption is AES-256-GCM with PBKDF2-SHA256 key derivation (600,000 iterations, well above OWASP minimum). The optional app password additionally encrypts everything saved locally. Without that password, the stored data is unrecoverable — by you, by anyone."
+      },
+      "faq": {
+        "title": "FAQ",
+        "items": {
+          "q1": "Where is my data stored?",
+          "a1": "In your browser only. Nothing is sent anywhere.",
+          "q2": "Does Cipher need the internet?",
+          "a2": "No. After the first load it works fully offline.",
+          "q3": "What if I forget my app password?",
+          "a3": "The stored data is gone forever. There is no recovery.",
+          "q4": "Can someone read intercepted ciphertext?",
+          "a4": "Not without the password. AES-256-GCM resists brute force.",
+          "q5": "Is Cipher really open source?",
+          "a5": "Yes. MIT license. Read or audit the code on GitHub.",
+          "q6": "Does it work on phones?",
+          "a6": "Yes. Install it as a PWA from any modern browser.",
+          "q7": "Why so many obfuscation modes?",
+          "a7": "Different channels strip different content. Pick one that survives yours.",
+          "q8": "Can I send files, images, or voice?",
+          "a8": "Yes. Anything you attach is encrypted before it leaves.",
+          "q9": "How is paired mode different from a password chat?",
+          "a9": "Paired uses keys you exchanged once. No shared password to remember or leak.",
+          "q10": "Can I use the same chat with two people?",
+          "a10": "Each paired chat is for one person. Create a new chat per contact.",
+          "q11": "Does ‘temporary chat’ leave any trace?",
+          "a11": "No. It is held only in memory and disappears on refresh.",
+          "q12": "Is my password sent anywhere?",
+          "a12": "Never. It is used locally to derive a key and is then discarded."
+        }
+      },
+      "cryptoVsSteg": {
+        "title": "Encryption vs. Steganography",
+        "intro": "Cryptography makes the content of a message unreadable. Steganography hides the very existence of the message. Cipher uses both at the same time.",
+        "cryptoTitle": "Cryptography: the locked box",
+        "cryptoBody": "Encryption scrambles your message into ciphertext that cannot be read without the key. Anyone who intercepts it can tell that a secret message was sent — but cannot read it. Think of it as a padlocked glass box: the box is visible, but its contents are completely inaccessible without the key. AES-256-GCM (what Cipher uses) is so strong that brute-forcing the key would take longer than the age of the universe.",
+        "stegTitle": "Steganography: the invisible ink",
+        "stegBody": "Steganography hides a message inside an innocent carrier — a photograph, a WAV recording, a block of cover text — so that an observer never suspects anything was sent at all. Think of a birthday cake whose recipe is hidden in the frosting, or a note tucked inside an ordinary cat picture. No lock in sight, because there is no visible box. The weakness: if someone extracts the carrier and looks carefully, they might find the payload.",
+        "tableTitle": "At a glance",
+        "tableRows": [
+          "Goal: make content unreadable — vs — hide that a message exists",
+          "Detectability: clearly looks encrypted — vs — invisible to the naked eye",
+          "Analogy: locked glass box — vs — invisible ink / cat picture",
+          "Weakness: attacker knows a secret was sent — vs — payload found if carrier is analyzed"
+        ],
+        "combined": "Cipher combines both: it encrypts first, then hides the result inside an image or audio carrier. Even if someone discovers the carrier and extracts the payload, all they find is unreadable ciphertext. Encryption protects the content; steganography protects the fact that a message was sent at all. Double protection."
+      }
+    }
+  },
+  "errors": {
+    "passwordRequired": "Enter a password.",
+    "cantDecryptBadEnvelope": "Cannot decrypt — the input does not contain recognizable encrypted data (CT1|/CT2|/CT3|/CT4| prefix missing).",
+    "decryptionFailed": "Decryption failed — wrong password or corrupted data.",
+    "micPermission": "Microphone permission required.",
+    "copyFailed": "Copy failed. Select the text and copy it manually.",
+    "clipboardReadDenied": "Clipboard read denied. Paste with Ctrl+V into the password field.",
+    "invalidFormat": "Invalid format.",
+    "cantCopyQr": "Copying this QR image is not supported on this device."
+  }
+}

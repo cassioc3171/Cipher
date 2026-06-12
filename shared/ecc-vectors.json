@@ -1,0 +1,43 @@
+{
+  "spec": "P-256 ECDH paired-mode. mnemonic→SHA256→HKDF(salt=Cipher-Mnemonic,info=ECDH-P256)→scalar=(BE mod n-1)+1→d·G uncompressed→base64. shared=HKDF-SHA256(ECDH_X, salt=SHA256(sort(pubA,pubB))[:16], info=Cipher-ECC-Session).",
+  "parties": {
+    "A": {
+      "mnemonic": [
+        "abandon",
+        "ability",
+        "able",
+        "about",
+        "above",
+        "absent",
+        "absorb",
+        "abstract",
+        "absurd",
+        "abuse",
+        "access",
+        "accident"
+      ],
+      "publicKeyB64": "BAW/aYq2h+dxzNpzOQOtjWsPs1bITjMfPfEIKuLofcDRt9pcJeK6kiSKv6HsukCPPXd6iWShC/4XqsFelw68NYw="
+    },
+    "B": {
+      "mnemonic": [
+        "zebra",
+        "zero",
+        "zone",
+        "zoo",
+        "youth",
+        "young",
+        "you",
+        "yellow",
+        "year",
+        "yard",
+        "wrong",
+        "write"
+      ],
+      "publicKeyB64": "BOD6wPYSlaJ3IonFgR71U7rusakUz6WPiMtnsq+7zCgetM9vnBdQzqMwE1fD8dhz9XsDsCf7WR30OWzlPQPhvco="
+    }
+  },
+  "shared": {
+    "secret": "68ixSJkPthyrSOPZRU5SNHSCALXvVP7xmd3hlAyy7fU=",
+    "saltB64": "vgumz1EnFPpXxFOt+Ci21g=="
+  }
+}

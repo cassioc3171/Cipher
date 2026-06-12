@@ -1,0 +1,14 @@
+{
+  "spec": "master-vault (web masterKey.ts): KEK=PBKDF2-SHA256 600k / 32B salt -> AES-256-GCM; wrap \"mk1:<ivB64>:<cipherB64>\"; verify=PBKDF2-SHA256 100k.",
+  "kek": {
+    "password": "master-vault-pw-2026",
+    "saltB64": "AQgPFh0kKzI5QEdOVVxjanF4f4aNlJuiqbC3vsXM09o=",
+    "plaintext": "chat-secret::سلام::ABCDEF0123456789",
+    "wrappedMk1": "mk1:0FvWXht+RE+jk0TI:uS9EoiBiXdjvDyhMwDPW7y02vnIE2z2/r9fEqMWqLXyWGKZ7RDXu7/pgoCB0eFZqiP23TAE+Og=="
+  },
+  "verify": {
+    "password": "master-vault-pw-2026",
+    "verifySaltB64": "BRIfLDlGU2BteoeUoa67yNXi7/wJFiMwPUpXZHF+i5g=",
+    "hashB64": "qnrYbtI6qC5DjVyQZh2adpumTXPDEwQIdc+OfMmfncc="
+  }
+}

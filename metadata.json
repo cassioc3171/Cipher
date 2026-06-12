@@ -1,0 +1,5 @@
+{
+  "name": "Cipher",
+  "description": "A simple Android-style app to encrypt and decrypt text using a secret key.",
+  "requestFramePermissions": ["microphone"]
+}

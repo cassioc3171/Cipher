@@ -1,0 +1,24 @@
+{
+  "spec": "rawEncode: noise WAV byte-exact (8000Hz mono, [4B LE len][payload][pad-even]); snow PNG pixel-array ([4B BE len][payload] in RGB, alpha=255)",
+  "noise": [
+    {
+      "id": "env",
+      "text": "CT4|T|mskJe/HGSXbFUNyrHzR3IQ==|lXSNK2I5GdUlMg2b|CbxndKWAuqMZkA7Ql99sndVlFAUn294TU7Fu",
+      "wavB64": "UklGRnwAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YVgAAABUAAAAQ1Q0fFR8bXNrSmUvSEdTWGJGVU55ckh6UjNJUT09fGxYU05LMkk1R2RVbE1nMmJ8Q2J4bmRLV0F1cU1aa0E3UWw5OXNuZFZsRkFVbjI5NFRVN0Z1"
+    },
+    {
+      "id": "odd",
+      "text": "CT4|odd-length-envelope-xyz",
+      "wavB64": "UklGRkQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YSAAAAAbAAAAQ1Q0fG9kZC1sZW5ndGgtZW52ZWxvcGUteHl6AA=="
+    }
+  ],
+  "snow": [
+    {
+      "id": "env",
+      "text": "CT4|T|mskJe/HGSXbFUNyrHzR3IQ==|lXSNK2I5GdUlMg2b|CbxndKWAuqMZkA7Ql99sndVlFAUn294TU7Fu",
+      "width": 6,
+      "height": 5,
+      "pixelsB64": "AAAA/1RDVP80fFT/fG1z/2tKZf8vSEf/U1hi/0ZVTv95ckj/elIz/0lRPf89fGz/WFNO/0sySf81R2T/VWxN/2cyYv98Q2L/eG5k/0tXQf91cU3/WmtB/zdRbP85OXP/bmRW/2xGQf9VbjL/OTRU/1U3Rv91AAD/"
+    }
+  ]
+}

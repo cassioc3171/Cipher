@@ -1,0 +1,468 @@
+/* ============================================================================
+   In-app step-by-step tutorial — overlay, spotlight, pulse, and tooltip.
+
+   Theming: every color is a CSS variable already defined by the active
+   theme (`--bg`, `--surface`, `--text-primary`, `--blue`, …) so the
+   tutorial automatically follows Ivory, Ivory Night, Material 3, etc.
+   ========================================================================== */
+
+.tutorial-root {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* Four segments framing the spotlight. Each catches clicks outside the
+   spotlight area, so the user can only interact with the highlighted
+   element. The spotlight area itself stays untouched — no overlay, no
+   pointer-events block — so the underlying button / input is fully
+   clickable and typeable in its natural position. */
+.tutorial-cutout-seg {
+  position: fixed;
+  background: rgba(20, 20, 19, 0.55);
+  pointer-events: auto;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  will-change: top, left, width, height;
+}
+html[data-theme="material3"] .tutorial-cutout-seg,
+html[data-theme="material3-night"] .tutorial-cutout-seg {
+  background: rgba(29, 27, 32, 0.55);
+}
+
+/* Coral ring around the spotlight — visual only, no click interception. */
+.tutorial-spotlight-ring {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 10px;
+  outline: 2px solid var(--blue);
+  outline-offset: 0;
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--blue) 25%, transparent),
+    0 0 24px 4px color-mix(in srgb, var(--blue) 35%, transparent);
+  will-change: top, left, width, height;
+}
+
+/* Soft "click the highlighted button" hint — appears when the user
+   clicks the dim segments instead of the highlighted element. Sits
+   below the spotlight, centered horizontally, with an arrow pointing
+   up at the target. Auto-dismisses (handled in JS) after ~1.6 s. */
+.tutorial-hint {
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 10003;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px 7px 10px;
+  background: var(--blue);
+  color: #FFFFFF;
+  border-radius: 14px;
+  font-family: var(--font-sans, 'Inter'), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  /* Keep on one line when there's room, but never bleed past the
+     viewport on narrow screens. */
+  white-space: nowrap;
+  max-width: calc(100vw - 24px);
+  pointer-events: none;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.18),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 760px) {
+  .tutorial-hint {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    /* Clamp to fit; if center would push it off-screen, browser will
+       still respect max-width and the long label wraps to 2 lines. */
+    max-width: calc(100vw - 32px);
+  }
+}
+html[data-theme="material3-night"] .tutorial-hint { color: #1D1B20; }
+.tutorial-hint-arrow {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: var(--blue);
+  border-radius: 2px;
+  box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.06);
+}
+.tutorial-hint-label { position: relative; z-index: 1; }
+
+/* Pulse ring — separate element so we can animate without retriggering
+   the spotlight position spring. */
+.tutorial-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 14px;
+  border: 2px solid var(--blue);
+  pointer-events: none;
+  animation: tutorial-pulse 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes tutorial-pulse {
+  0%   { opacity: 0.9; transform: scale(1); }
+  60%  { opacity: 0; transform: scale(1.12); }
+  100% { opacity: 0; transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tutorial-pulse {
+    animation: none;
+    opacity: 0.65;
+  }
+}
+
+/* The tooltip card. Picks up Anthropic editorial typography in Ivory,
+   M3 surfaces in Material 3, etc. */
+.tutorial-tooltip {
+  position: fixed;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--divider);
+  border-radius: 14px;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.18),
+    0 3px 9px rgba(0, 0, 0, 0.05);
+  padding: 16px 18px 14px;
+  pointer-events: auto;
+  font-family: var(--font-sans, 'Inter'), system-ui, -apple-system, sans-serif;
+  z-index: 10002;
+  max-width: calc(100vw - 24px);
+}
+html[data-theme="ivory"] .tutorial-tooltip,
+html[data-theme="ivory-night"] .tutorial-tooltip {
+  font-family: var(--font-sans, 'Inter'), system-ui, sans-serif;
+}
+
+.tutorial-tooltip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.tutorial-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--blue-container);
+  color: var(--blue-on-container);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.tutorial-progress svg { opacity: 0.85; }
+
+.tutorial-close {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  color: var(--text-tertiary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background var(--dur-short, 150ms) ease,
+    color var(--dur-short, 150ms) ease;
+}
+.tutorial-close:hover {
+  background: var(--surface-container-high);
+  color: var(--text-primary);
+}
+
+.tutorial-tooltip-title {
+  font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+.tutorial-tooltip-body {
+  font-family: var(--font-body, 'Lora'), Georgia, serif;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 14px;
+}
+html[data-theme="material3"] .tutorial-tooltip-body,
+html[data-theme="material3-night"] .tutorial-tooltip-body {
+  /* M3 prefers sans over serif for body */
+  font-family: var(--font-body, 'Roboto Flex'), 'Inter', sans-serif;
+  font-style: normal;
+}
+
+.tutorial-tooltip-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.tutorial-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background var(--dur-short, 150ms) ease,
+    border-color var(--dur-short, 150ms) ease,
+    color var(--dur-short, 150ms) ease,
+    transform var(--dur-short, 150ms) ease;
+}
+.tutorial-btn.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--divider);
+}
+.tutorial-btn.ghost:hover:not(:disabled) {
+  background: var(--surface-container);
+  color: var(--text-primary);
+}
+.tutorial-btn.ghost:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.tutorial-btn.primary {
+  background: var(--blue);
+  color: #FFFFFF;
+}
+.tutorial-btn.primary:hover:not(.disabled) {
+  background: var(--blue-hover);
+  transform: translateY(-1px);
+}
+.tutorial-btn.primary.disabled {
+  background: color-mix(in srgb, var(--blue) 35%, var(--surface-container-high));
+  cursor: not-allowed;
+}
+.tutorial-btn.primary.disabled:hover {
+  background: color-mix(in srgb, var(--blue) 40%, var(--surface-container-high));
+}
+html[data-theme="material3"] .tutorial-btn.primary {
+  color: #FFFFFF;
+}
+html[data-theme="material3-night"] .tutorial-btn.primary {
+  color: #1D1B20;
+}
+.tutorial-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* RTL — flip arrows */
+html[dir="rtl"] .tutorial-btn svg {
+  transform: scaleX(-1);
+}
+html[dir="rtl"] .tutorial-tooltip-head {
+  flex-direction: row-reverse;
+}
+
+/* First-run nudge toast */
+.tutorial-nudge {
+  position: fixed;
+  bottom: 24px;
+  inset-inline-start: 24px;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px 12px 18px;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+  max-width: 360px;
+  font-family: var(--font-sans, 'Inter'), system-ui, sans-serif;
+}
+/* Plain-CSS enter animation. Pairs with the motion-free TutorialNudge —
+ * see the file-header comment in TutorialNudge.tsx for why we don't use
+ * motion 12.x for this. */
+.tutorial-nudge--entering {
+  animation: tutorial-nudge-enter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes tutorial-nudge-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tutorial-nudge--entering {
+    animation: none;
+  }
+}
+.tutorial-nudge-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--blue-container);
+  color: var(--blue);
+  flex-shrink: 0;
+}
+.tutorial-nudge-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.tutorial-nudge-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.tutorial-nudge-desc {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+.tutorial-nudge-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.tutorial-nudge-cta {
+  background: var(--blue);
+  color: #FFFFFF;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--dur-short, 150ms) ease;
+}
+.tutorial-nudge-cta:hover { background: var(--blue-hover); }
+.tutorial-nudge-dismiss {
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: inline-grid;
+  place-items: center;
+}
+.tutorial-nudge-dismiss:hover {
+  color: var(--text-primary);
+  background: var(--surface-container);
+}
+
+/* Tutorials list inside the Guide panel */
+.guide-scenarios {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 4px 0 4px;
+}
+.guide-scenario {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--surface-container-low, transparent);
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  text-align: start;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-short, 150ms) ease,
+    background var(--dur-short, 150ms) ease,
+    transform var(--dur-short, 150ms) ease;
+}
+.guide-scenario:hover {
+  border-color: var(--blue);
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+.guide-scenario-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.guide-scenario-title {
+  font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.005em;
+}
+.guide-scenario-meta {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+.guide-scenario-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  background: var(--blue);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+html[data-theme="material3-night"] .guide-scenario-cta { color: #1D1B20; }
+
+@media (max-width: 760px) {
+  /* Tutorial tooltip is compact on mobile so it leaves room above for
+   * the spotlight target (composer chip / textarea sit at the bottom of
+   * the viewport, which leaves only ~700 px for the tooltip). Without
+   * these overrides the card runs ~263 px tall and crowds the spotlight.
+   * (QA pass 2026-05-27.) */
+  .tutorial-tooltip {
+    width: calc(100vw - 24px) !important;
+    left: 12px !important;
+    right: 12px;
+    padding: 12px 14px 10px;
+  }
+  .tutorial-tooltip-head {
+    margin-bottom: 6px;
+  }
+  .tutorial-tooltip-title {
+    font-size: 0.9375rem;
+    margin: 0 0 4px;
+  }
+  .tutorial-tooltip-body {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    margin: 0 0 10px;
+  }
+  .tutorial-tooltip-foot {
+    gap: 6px;
+  }
+  .tutorial-btn {
+    padding: 7px 10px;
+    font-size: 0.8125rem;
+  }
+  .tutorial-nudge {
+    max-width: calc(100vw - 32px);
+    inset-inline-start: 16px;
+    inset-inline-end: 16px;
+    bottom: 16px;
+  }
+}

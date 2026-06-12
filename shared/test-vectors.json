@@ -1,0 +1,65 @@
+{
+  "spec": "CTn|type|saltB64|ivB64|cipherB64 ; AES-256-GCM ; PBKDF2-SHA256 600k(CT3/CT4)/100k(CT1/CT2 legacy decrypt-only) ; salt 16B ; iv 12B ; gzip(fflate compressSync) for CT4 ; STANDARD padded base64. Source of truth = PWA src/lib/crypto.ts.",
+  "vectors": [
+    {
+      "id": "pw-ct3-ascii",
+      "mode": "password",
+      "type": "T",
+      "password": "CipherInterop!2026",
+      "plaintext": "plain ascii message",
+      "envelope": "CT3|T|WAPgMkLNNSt1idb7lO+l2Q==|FJAKbnfugeWwr7w6|1N07m3fWZvOSX7MjETNHvxnEq595KsilvlkjaWFCuMLAUqM="
+    },
+    {
+      "id": "pw-ct3-unicode",
+      "mode": "password",
+      "type": "T",
+      "password": "CipherInterop!2026",
+      "plaintext": "Hello interop ✅ سلام دنیا 123",
+      "envelope": "CT3|T|VXCsIh2h/hkaPulEcTOCqg==|Es4WMg8ilRAyM92d|98SFyu8pL5bvrzFAwO4jmH+4JIh+A0FuBdiRBCSAjxzJ50vGyYCOPHFg2ndI3bFA8k97pOH6mQ=="
+    },
+    {
+      "id": "pw-ct4-compressed",
+      "mode": "password",
+      "type": "T",
+      "password": "CipherInterop!2026",
+      "plaintext": "compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me compress me ",
+      "envelope": "CT4|T|7LpRHoxYrWbTqPj8K+2PsQ==|Io/BURj6XLaKJyZh|g3O5g8TYKrEmV8n84covUyaVh5959/mqMoa0+9YCAp5iK6XYNoDEN5Gu7V9Ic1QTOoLcug=="
+    },
+    {
+      "id": "pw-file",
+      "mode": "password",
+      "type": "F",
+      "password": "CipherInterop!2026",
+      "plaintext": "photo.jpg::data:image/jpeg;base64,QUJDRA==",
+      "envelope": "CT3|F|iCUrQVAwzRCpivdjCijGYw==|7p9ZJwB59RpUTF2d|9L8ok1WXSMzi1ftQrgql3rS/I7AI94+NGAxxd9JhJUNCh8g4SwSE8veBcfStL605sdcDpcTsRRDWig=="
+    },
+    {
+      "id": "obf-emoji",
+      "mode": "obfuscation",
+      "obfuscation": "emoji",
+      "password": "CipherInterop!2026",
+      "plaintext": "obfuscation round trip",
+      "underlying": "CT3|T|6z4ZEDUAYQ8AFCOjMfWtVw==|tV4LKJ777slNriFR|zfZYemK31dQt45c/jDUtp/jPEVOUsLvBBCmjoJ1x+sFDDfenCyY=",
+      "obfuscated": "🐧🦈🐧🐳🐯🦆🦋🐹🦉🐭🦅🐅🐧🐳🐴🦍🐸🦊🦕🦊🐦🦊🦉🐱🦇🦉🐰🐆🐧🦅🐴🐹🦆🐊🦕🐸🐴🐢🦋🐋🦉🦎🐛🐢🐷🐋🐧🐢🐷🐋🐧🐢🐸🐋🐸🐋🦉🕷🐦🐷🐤🐋🦖🐅🐸🐳🦋🐳🐝🐰🦓🐬🦄🦅🐴🐤🐯🦆🦋🐹🐌🐍🐴🦄🦇🦇🦉🦞🐤🐳🐷🐟🐴🦊🦊🐋🐸🐹🦉🕷🐯🦆🐯🐻🦄🦂🐦🦉🦋🐼🐶🐢🐷🦂🐴🐙🦅🐰🦉🦇🦆🦈🦉🐳🦆🐼🐴🐭🐧🦂🐸🦞🦄🐍🦛🦁🐷🐺🐜🐢🐷🦂🐯🐳🐦🦂🐦🐰🐴🐍🦉🦀🐧🐅🐢🐴🐯🦆🐸🐰"
+    },
+    {
+      "id": "obf-persian",
+      "mode": "obfuscation",
+      "obfuscation": "persian",
+      "password": "CipherInterop!2026",
+      "plaintext": "obfuscation round trip",
+      "underlying": "CT3|T|6z4ZEDUAYQ8AFCOjMfWtVw==|tV4LKJ777slNriFR|zfZYemK31dQt45c/jDUtp/jPEVOUsLvBBCmjoJ1x+sFDDfenCyY=",
+      "obfuscated": "نان رودخانه رایانه | رودخانه | موسیقی کلاه تلویزیون گربه پدر مادر جنگل آب سگ ستاره هنر آب برادر نان خورشید بیمارستان آسمان دانشگاه پرنده پنیر حیوان آبمیوه پایان پایان | پنیر حیوان تلویزیون گل درخت ماشین فیلم فیلم فیلم شیر غذا زمین گوشت پزشک برادر کوه | کلاه دانشگاه گربه سگ مدرسه میوه درخت رایانه عینک کاغذ ستاره پنیر تلویزیون رادیو قلم شنا بیمارستان مادر جنگل پنیر موز شنا بیمارستان ماه پدر حیوان خورشید جنگل شیر گل قهوه بابا بابا نان میوه بیمارستان پرتقال ماشین عینک لباس فوتبال شیر برادر مادر مادر دانشگاه مدرسه سیب نان کفش سگ پایان"
+    },
+    {
+      "id": "obf-steg",
+      "mode": "obfuscation",
+      "obfuscation": "steg",
+      "password": "CipherInterop!2026",
+      "plaintext": "obfuscation round trip",
+      "underlying": "CT3|T|6z4ZEDUAYQ8AFCOjMfWtVw==|tV4LKJ777slNriFR|zfZYemK31dQt45c/jDUtp/jPEVOUsLvBBCmjoJ1x+sFDDfenCyY=",
+      "cover": "A perfectly ordinary sentence.",
+      "obfuscated": "A​‌​​​​‌‌​‌​‌​‌​​​​‌‌​​‌‌​‌‌‌‌‌​​​‌​‌​‌​​​‌‌‌‌‌​​​​‌‌​‌‌​​‌‌‌‌​‌​​​‌‌​‌​​​‌​‌‌​‌​​‌​​​‌​‌​‌​​​‌​​​‌​‌​‌​‌​‌​​​​​‌​‌​‌‌​​‌​‌​‌​​​‌​​‌‌‌​​​​‌​​​​​‌​‌​​​‌‌​​‌​​​​‌‌​‌​​‌‌‌‌​‌‌​‌​‌​​‌​​‌‌​‌​‌‌​​‌‌​​‌​‌​‌‌‌​‌‌‌​‌​​​‌​‌​‌‌​​‌‌‌​‌‌‌​​‌‌‌‌​‌​​‌‌‌‌​‌​‌‌‌‌‌​​​‌‌‌​‌​​​‌​‌​‌‌​​​‌‌​‌​​​‌​​‌‌​​​‌​​‌​‌‌​‌​​‌​‌​​​‌‌​‌‌‌​​‌‌​‌‌‌​​‌‌​‌‌‌​‌‌‌​​‌‌​‌‌​‌‌​​​‌​​‌‌‌​​‌‌‌​​‌​​‌‌​‌​​‌​‌​​​‌‌​​‌​‌​​‌​​‌‌‌‌‌​​​‌‌‌‌​‌​​‌‌​​‌‌​​‌​‌‌​‌​​‌​‌‌​​‌​‌‌​​‌​‌​‌‌​‌‌​‌​‌​​‌​‌‌​​‌‌​​‌‌​​‌‌​​​‌​‌‌​​‌​​​‌​‌​​​‌​‌‌‌​‌​​​​‌‌​‌​​​​‌‌​‌​‌​‌‌​​​‌‌​​‌​‌‌‌‌​‌‌​‌​‌​​‌​​​‌​​​‌​‌​‌​‌​‌‌‌​‌​​​‌‌‌​​​​​​‌​‌‌‌‌​‌‌​‌​‌​​‌​‌​​​​​‌​​​‌​‌​‌​‌​‌‌​​‌​​‌‌‌‌​‌​‌​‌​‌​‌‌‌​​‌‌​‌​​‌‌​​​‌‌‌​‌‌​​‌​​​​‌​​‌​​​​‌​​‌​​​​‌‌​‌‌​‌‌​‌​‌‌​‌​‌​​‌‌​‌‌‌‌​‌​​‌​‌​​​‌‌​​​‌​‌‌‌‌​​​​​‌​‌​‌‌​‌‌‌​​‌‌​‌​​​‌‌​​‌​​​‌​​​‌​​​‌​​​‌‌​​‌‌​​‌‌​​‌​‌​‌‌​‌‌‌​​‌​​​​‌‌​‌‌‌‌​​‌​‌​‌‌​​‌​​‌‌‌‌​‌ perfectly ordinary sentence."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+# node / vite
+node_modules/
+dist/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# android build outputs
+android/.gradle/
+android/build/
+android/app/build/
+android/core/build/
+android/data/build/
+android/local.properties
+android/captures/
+android/.idea/
+android/*.iml
+android/.cxx/
+android/app/release/
+android/app/debug/
+
+# editor / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# compiled APKs ship via GitHub Releases
+Cipher-*.apk

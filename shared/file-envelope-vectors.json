@@ -1,0 +1,17 @@
+{
+  "spec": "file envelope = CTn|F|... (type 'F'); plaintext '<name>::<dataURL>'; files are NOT gzipped (CT3) — web encryptData compresses only type 'T'. Replaces Android bespoke CT4F.",
+  "cases": [
+    {
+      "id": "png",
+      "password": "file-envelope-pw-2026",
+      "payload": "photo.png::data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR4nGNgYGAAAAAEAAH2FzhVAAAAAElFTkSuQmCC",
+      "envelope": "CT3|F|CcmNWlxS/4ZcVFl6PgLX/A==|Ucl8xgDZYznvoRa0|ejwx/rbc4WlZJjSFSMkk0OnW8r5kpVaF1TnqtBlJpgp60Vp0XMJnFSnX5fTiI7EFToLzjpPIGctPeoY8ZMXFhwPEC05z0a1/OEQ7QGiCyu41BqUzG2/tRjXtbSO+/VxPcAQzXF+wgkJCoB2bw88BQPtngStw9SOtHXiU+ZDG2iUWBf0tUWuv8v7gJj+w"
+    },
+    {
+      "id": "bin",
+      "password": "file-envelope-pw-2026",
+      "payload": "note.bin::data:application/octet-stream;base64,SGVsbG8gd29ybGQh",
+      "envelope": "CT3|F|qggHikCinYrnknat4S/h8w==|H2mRNnTe2P/Tq7iK|5KgV8TUQ7MeY9wfwpGe7My462Rm/ZlCYfNtwaU6bzX1T8XbiOBAzPki4EHLnzvQGH7zSKjBoUdv/35UYucsOSydgbY+FR+4EBL86za9iDQ=="
+    }
+  ]
+}
