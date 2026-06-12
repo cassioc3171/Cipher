@@ -84,8 +84,7 @@ paste into your chat — without ever leaving the conversation.
 
 ### Install the PWA
 
-1. Open **[cipher.example](https://CMOS-Jumper.github.io/Cipher/)** in any modern browser  
-   *(update this link once deployed to GitHub Pages / Vercel / Netlify)*
+1. Open **[cmos-jumper.github.io/Cipher](https://cmos-jumper.github.io/Cipher/)** in any modern browser
 2. Click your browser's **Install** button — Chrome menu → *Install app*, or Safari share sheet → *Add to Home Screen*
 3. Launch from your home screen. Works offline after first load.
 
