@@ -277,6 +277,8 @@
     "aboutDisguise": "Disguise encrypted output as emoji, Persian poetry, steganographic cover text, QR codes, audio noise, or snow images.",
     "aboutMedia": "Supports text, voice, file, and image encryption with optional ECC paired sessions.",
     "aboutLicense": "Open-source · MIT License",
+    "aboutSource": "Source code on GitHub",
+    "aboutAndroid": "Download for Android",
     "deleteAllConfirmText": "This will clear all chats, history, and settings. This cannot be undone.",
     "deleteAllConfirmBtn": "Confirm Delete",
     "supportMessage": "Cipher is free, open-source, and runs with zero servers. If it's useful to you, consider buying me a coffee to keep development going.",

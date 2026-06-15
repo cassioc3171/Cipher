@@ -35,6 +35,7 @@ import {
   FileText,
   Image,
   Film,
+  Github,
   Music,
   Heart,
   HelpCircle,
@@ -5858,6 +5859,26 @@ export default function App() {
                     </div>
                   </div>
                   <p className="about-license">{t('settings.aboutLicense')}</p>
+                  <div className="about-links">
+                    <a
+                      className="about-link"
+                      href="https://github.com/CMOS-Jumper/Cipher"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github size={13} />
+                      <span>{t('settings.aboutSource')}</span>
+                    </a>
+                    <a
+                      className="about-link"
+                      href="https://github.com/CMOS-Jumper/Cipher/releases"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download size={13} />
+                      <span>{t('settings.aboutAndroid')}</span>
+                    </a>
+                  </div>
                 </div>
               </section>
 
