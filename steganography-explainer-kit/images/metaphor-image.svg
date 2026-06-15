@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1100" width="880" height="1100">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="38%" r="80%"><stop offset="0%" stop-color="#121a33"/><stop offset="100%" stop-color="#0B1020"/></radialGradient>
+  <linearGradient id="cob" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient>
+  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="gglow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="9"/></filter>
+</defs>
+<rect width="880" height="1100" fill="url(#bg)"/>
+<rect x="359.5" y="596.2" width="2" height="2" rx="1" fill="#3b82f6" opacity="0.09"/>
+<rect x="254.8" y="247.2" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.05"/>
+<rect x="681.5" y="757.7" width="4" height="4" rx="1" fill="#3DDC84" opacity="0.21"/>
+<rect x="520.1" y="842.7" width="4" height="4" rx="1" fill="#5A0FC8" opacity="0.13"/>
+<rect x="740.5" y="678.9" width="2" height="2" rx="1" fill="#2563EB" opacity="0.17"/>
+<rect x="237.6" y="347.0" width="4" height="4" rx="1" fill="#3DDC84" opacity="0.06"/>
+<rect x="84.3" y="523.7" width="3" height="3" rx="1" fill="#5A0FC8" opacity="0.09"/>
+<rect x="657.5" y="854.2" width="2" height="2" rx="1" fill="#3DDC84" opacity="0.20"/>
+<rect x="624.7" y="812.5" width="4" height="4" rx="1" fill="#3DDC84" opacity="0.13"/>
+<rect x="554.9" y="649.0" width="6" height="6" rx="1" fill="#3DDC84" opacity="0.08"/>
+<rect x="400.9" y="873.5" width="4" height="4" rx="1" fill="#2563EB" opacity="0.19"/>
+<rect x="244.6" y="10.2" width="2" height="2" rx="1" fill="#5A0FC8" opacity="0.18"/>
+<rect x="875.3" y="392.3" width="3" height="3" rx="1" fill="#5A0FC8" opacity="0.14"/>
+<rect x="299.3" y="921.9" width="6" height="6" rx="1" fill="#3DDC84" opacity="0.21"/>
+<rect x="669.4" y="743.5" width="5" height="5" rx="1" fill="#3b82f6" opacity="0.08"/>
+<rect x="820.6" y="808.7" width="2" height="2" rx="1" fill="#5A0FC8" opacity="0.19"/>
+<rect x="810.5" y="69.4" width="2" height="2" rx="1" fill="#5A0FC8" opacity="0.05"/>
+<rect x="157.0" y="576.1" width="3" height="3" rx="1" fill="#2563EB" opacity="0.25"/>
+<rect x="245.8" y="1057.0" width="4" height="4" rx="1" fill="#5A0FC8" opacity="0.27"/>
+<rect x="480.8" y="536.4" width="4" height="4" rx="1" fill="#3DDC84" opacity="0.16"/>
+<rect x="354.7" y="601.8" width="5" height="5" rx="1" fill="#5A0FC8" opacity="0.07"/>
+<rect x="115.9" y="145.6" width="3" height="3" rx="1" fill="#3DDC84" opacity="0.07"/>
+<rect x="348.4" y="379.7" width="5" height="5" rx="1" fill="#3b82f6" opacity="0.07"/>
+<rect x="245.2" y="586.8" width="4" height="4" rx="1" fill="#3b82f6" opacity="0.11"/>
+<rect x="492.8" y="80.3" width="4" height="4" rx="1" fill="#3b82f6" opacity="0.25"/>
+<rect x="870.5" y="497.9" width="3" height="3" rx="1" fill="#5A0FC8" opacity="0.10"/>
+<rect x="464.3" y="351.0" width="4" height="4" rx="1" fill="#3b82f6" opacity="0.26"/>
+<rect x="800.1" y="86.9" width="5" height="5" rx="1" fill="#3DDC84" opacity="0.27"/>
+<rect x="336.2" y="1058.9" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.15"/>
+<rect x="137.6" y="162.4" width="2" height="2" rx="1" fill="#2563EB" opacity="0.13"/>
+<rect x="471.4" y="233.1" width="3" height="3" rx="1" fill="#2563EB" opacity="0.09"/>
+<rect x="67.9" y="104.5" width="6" height="6" rx="1" fill="#5A0FC8" opacity="0.17"/>
+<rect x="354.5" y="309.0" width="3" height="3" rx="1" fill="#2563EB" opacity="0.21"/>
+<rect x="283.2" y="653.1" width="4" height="4" rx="1" fill="#5A0FC8" opacity="0.27"/>
+<rect x="14.4" y="875.2" width="2" height="2" rx="1" fill="#3b82f6" opacity="0.09"/>
+<rect x="66.2" y="618.6" width="3" height="3" rx="1" fill="#5A0FC8" opacity="0.26"/>
+<rect x="781.0" y="908.9" width="3" height="3" rx="1" fill="#3b82f6" opacity="0.18"/>
+<rect x="263.6" y="850.4" width="3" height="3" rx="1" fill="#3b82f6" opacity="0.20"/>
+<rect x="422.6" y="312.8" width="5" height="5" rx="1" fill="#5A0FC8" opacity="0.16"/>
+<rect x="606.1" y="965.8" width="5" height="5" rx="1" fill="#3DDC84" opacity="0.28"/>
+<rect x="402.7" y="882.2" width="4" height="4" rx="1" fill="#5A0FC8" opacity="0.18"/>
+<rect x="736.4" y="528.4" width="3" height="3" rx="1" fill="#5A0FC8" opacity="0.13"/>
+<rect x="198.0" y="472.3" width="2" height="2" rx="1" fill="#3DDC84" opacity="0.28"/>
+<rect x="85.7" y="253.4" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.12"/>
+<rect x="680.6" y="232.0" width="4" height="4" rx="1" fill="#5A0FC8" opacity="0.20"/>
+<rect x="390.4" y="1042.0" width="6" height="6" rx="1" fill="#5A0FC8" opacity="0.19"/>
+<rect x="147.9" y="244.7" width="6" height="6" rx="1" fill="#2563EB" opacity="0.13"/>
+<rect x="829.5" y="185.9" width="5" height="5" rx="1" fill="#2563EB" opacity="0.06"/>
+<rect x="272.6" y="133.1" width="5" height="5" rx="1" fill="#3b82f6" opacity="0.11"/>
+<rect x="467.1" y="393.6" width="2" height="2" rx="1" fill="#5A0FC8" opacity="0.06"/>
+<rect x="732.8" y="545.9" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.13"/>
+<rect x="761.6" y="774.3" width="5" height="5" rx="1" fill="#2563EB" opacity="0.06"/>
+<rect x="343.9" y="911.1" width="6" height="6" rx="1" fill="#2563EB" opacity="0.20"/>
+<rect x="782.6" y="664.4" width="3" height="3" rx="1" fill="#3DDC84" opacity="0.20"/>
+<rect x="491.5" y="59.0" width="5" height="5" rx="1" fill="#3b82f6" opacity="0.26"/>
+<rect x="40" y="40" width="800" height="1020" rx="34" fill="none" stroke="#26304f" stroke-width="2"/>
+<rect x="70" y="74" width="150" height="48" rx="24" fill="#3DDC84" opacity="0.16"/>
+<text x="145" y="106" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="24" fill="#3DDC84" text-anchor="middle" font-weight="700">IMAGE</text>
+<text x="70" y="190" font-family="Poppins, Nunito, 'Segoe UI', system-ui, sans-serif" font-size="54" font-weight="900" fill="#F4F6FF">Change the last digit</text>
+<text x="70" y="232" font-family="Poppins, Nunito, 'Segoe UI', system-ui, sans-serif" font-size="26" fill="#3b82f6">hide a whole letter</text>
+<g transform="translate(120,330)"><rect width="290" height="220" rx="18" fill="#121a33" stroke="#26304f" stroke-width="2"/><circle cx="145" cy="95" r="55" fill="#2563EB"/><path d="M 100,55 l 18,-30 l 16,30 Z" fill="#2563EB"/><path d="M 190,55 l -18,-30 l -16,30 Z" fill="#2563EB"/><circle cx="128" cy="92" r="8" fill="#F4F6FF"/><circle cx="162" cy="92" r="8" fill="#F4F6FF"/><path d="M 120,165 q 25,24 50,0" stroke="#F4F6FF" stroke-width="4" fill="none"/><text x="145" y="205" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="18" fill="#F4F6FF" text-anchor="middle" opacity="0.6">original</text></g>
+<g transform="translate(470,330)"><rect width="290" height="220" rx="18" fill="#121a33" stroke="#26304f" stroke-width="2"/><circle cx="145" cy="95" r="55" fill="#2563EB"/><path d="M 100,55 l 18,-30 l 16,30 Z" fill="#2563EB"/><path d="M 190,55 l -18,-30 l -16,30 Z" fill="#2563EB"/><circle cx="128" cy="92" r="8" fill="#F4F6FF"/><circle cx="162" cy="92" r="8" fill="#F4F6FF"/><path d="M 120,165 q 25,24 50,0" stroke="#F4F6FF" stroke-width="4" fill="none"/><text x="145" y="205" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="18" fill="#F4F6FF" text-anchor="middle" opacity="0.6">+ secret</text></g>
+<text x="440" y="600" font-family="Poppins, Nunito, 'Segoe UI', system-ui, sans-serif" font-size="26" fill="#F4F6FF" text-anchor="middle" opacity="0.85">identical to your eyes</text>
+<g transform="translate(150,640)">
+<rect x="0" y="0" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="18" y="50" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">93</text>
+<text x="74" y="50" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">0</text>
+<rect x="120" y="0" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="138" y="50" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">73</text>
+<text x="194" y="50" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">1</text>
+<rect x="240" y="0" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="258" y="50" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">03</text>
+<text x="314" y="50" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">0</text>
+<rect x="0" y="86" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="18" y="136" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">83</text>
+<text x="74" y="136" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">1</text>
+<rect x="120" y="86" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="138" y="136" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">13</text>
+<text x="194" y="136" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">0</text>
+<rect x="240" y="86" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="258" y="136" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">33</text>
+<text x="314" y="136" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">1</text>
+<rect x="0" y="172" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="18" y="222" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">53</text>
+<text x="74" y="222" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">0</text>
+<rect x="120" y="172" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="138" y="222" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">93</text>
+<text x="194" y="222" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">1</text>
+<rect x="240" y="172" width="110" height="78" rx="8" fill="#121a33" stroke="#26304f" stroke-width="2"/>
+<text x="258" y="222" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#F4F6FF">23</text>
+<text x="314" y="222" font-family="'JetBrains Mono','Space Mono',ui-monospace,monospace" font-size="34" fill="#3DDC84" filter="url(#glow)">0</text>
+</g>
+<text x="600" y="720" font-family="Poppins, Nunito, 'Segoe UI', system-ui, sans-serif" font-size="26" fill="#F4F6FF" opacity="0.9">232-><tspan fill="#3DDC84">233</tspan></text>
+<text x="600" y="756" font-family="Poppins, Nunito, 'Segoe UI', system-ui, sans-serif" font-size="22" fill="#F4F6FF" opacity="0.7">the last bit</text>
+<text x="600" y="784" font-family="Poppins, Nunito, 'Segoe UI', system-ui, sans-serif" font-size="22" fill="#F4F6FF" opacity="0.7">= invisible</text>
+<text x="70" y="1010" font-family="Poppins, Nunito, 'Segoe UI', system-ui, sans-serif" font-size="27" fill="#F4F6FF" opacity="0.9">Millions of pixels -> hide pages of text.</text>
+</svg>

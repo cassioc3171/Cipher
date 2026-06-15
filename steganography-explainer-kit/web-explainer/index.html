@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hidden in Plain Sight — Steganography, explained · Cipher</title>
+<meta name="description" content="Hide a secret message inside ordinary text and images — and reveal it again. An interactive explainer of steganography, by Cipher." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cobalt:#2563eb; --cobalt-l:#3b82f6; --violet:#5a0fc8;
+    --green:#3ddc84; --mid:#0b1020; --mid2:#121a33; --paper:#f4f6ff; --dim:#26304f;
+    --font:'Poppins',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--mid);color:var(--paper);line-height:1.6;overflow-x:hidden}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{line-height:1.1;font-weight:900}
+  a{color:var(--green)}
+  .glow{filter:drop-shadow(0 0 14px rgba(61,220,132,.45))}
+  /* background pixel field */
+  .bgfx{position:fixed;inset:0;z-index:-1;background:
+     radial-gradient(900px 600px at 70% 10%, rgba(37,99,235,.18), transparent 60%),
+     radial-gradient(700px 500px at 10% 90%, rgba(90,15,200,.16), transparent 60%),
+     var(--mid);}
+  /* hero */
+  header.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative}
+  .badge{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--cobalt-l);border:1px solid var(--dim);padding:7px 14px;border-radius:999px;text-transform:uppercase}
+  .hero h1{font-size:clamp(40px,9vw,86px);margin:18px 0 6px}
+  .hero h1 .hl{color:var(--green)}
+  .hero p.sub{font-size:clamp(16px,2.6vw,22px);color:#aeb9e6;max-width:560px}
+  .mascot{width:min(330px,72vw);margin:6px auto 0;animation:bob 4s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(-12px)}}
+  .scrollcue{margin-top:26px;font-size:14px;color:#8a96c8;animation:bob 2.4s infinite}
+  /* sections */
+  section{padding:70px 0;border-top:1px solid rgba(255,255,255,.05)}
+  .eyebrow{font-family:var(--mono);color:var(--green);letter-spacing:2px;font-size:13px;text-transform:uppercase}
+  h2{font-size:clamp(28px,5vw,46px);margin:8px 0 14px}
+  .lead{font-size:clamp(16px,2.3vw,20px);color:#c3cbf0;max-width:680px}
+  /* crypto vs steg */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+  .vs .card{background:var(--mid2);border:1px solid var(--dim);border-radius:20px;padding:24px}
+  .vs .card h3{font-size:20px;margin-bottom:6px}
+  .vs .lock{color:var(--cobalt-l)} .vs .hide{color:var(--green)}
+  .vs .big{font-size:44px;margin:10px 0}
+  .punch{margin-top:24px;font-size:clamp(18px,3vw,26px);font-weight:800;text-align:center}
+  .punch .g{color:var(--green)}
+  @media(max-width:640px){.vs{grid-template-columns:1fr}}
+  /* spots grid */
+  .spots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+  .spots img{width:100%;border-radius:18px;border:1px solid var(--dim);display:block}
+  @media(max-width:640px){.spots{grid-template-columns:1fr}}
+  /* demo blocks */
+  .demo{background:var(--mid2);border:1px solid var(--dim);border-radius:22px;padding:26px;margin-top:26px}
+  .demo h3{font-size:22px;margin-bottom:4px}
+  .demo .hint{color:#9aa6d6;font-size:14px;margin-bottom:16px}
+  label{display:block;font-size:13px;color:#9aa6d6;margin:14px 0 6px;font-family:var(--mono);text-transform:uppercase;letter-spacing:1px}
+  input[type=text],textarea{width:100%;background:#0c1430;border:1px solid var(--dim);color:var(--paper);
+    border-radius:12px;padding:13px 15px;font-family:var(--mono);font-size:15px;resize:vertical}
+  textarea{min-height:74px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  button{background:var(--cobalt);color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:700;
+    font-family:var(--font);font-size:15px;cursor:pointer;transition:transform .08s, background .2s}
+  button:hover{background:var(--cobalt-l);transform:translateY(-1px)}
+  button.ghost{background:transparent;border:1px solid var(--dim);color:var(--paper)}
+  button.go{background:var(--green);color:#06210f}
+  .out{margin-top:16px;background:#0c1430;border:1px dashed var(--green);border-radius:12px;padding:14px;
+    font-family:var(--mono);font-size:15px;word-break:break-word;min-height:20px}
+  .out.empty{border-color:var(--dim);color:#6b76a3}
+  .tag{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--green);
+    background:rgba(61,220,132,.1);border-radius:8px;padding:3px 9px;margin-bottom:6px}
+  canvas{max-width:100%;border-radius:14px;border:1px solid var(--dim);background:#000;display:block;margin-top:8px}
+  .canvwrap{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+  .canvwrap > div{flex:1;min-width:240px}
+  .pill{display:inline-flex;gap:8px;align-items:center;background:var(--mid2);border:1px solid var(--dim);
+    border-radius:999px;padding:8px 14px;font-size:14px;margin:6px 6px 0 0}
+  /* facts */
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+  .fact{background:var(--mid2);border:1px solid var(--dim);border-radius:18px;padding:22px}
+  .fact h3{font-size:18px;color:var(--green);margin-bottom:8px}
+  .fact p{color:#c3cbf0;font-size:15px}
+  @media(max-width:640px){.facts{grid-template-columns:1fr}}
+  /* social steg */
+  .social{background:linear-gradient(160deg,rgba(37,99,235,.14),rgba(90,15,200,.14));
+    border:1px solid var(--dim);border-radius:24px;padding:34px;margin-top:20px;text-align:center}
+  .social .twomeanings{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;text-align:left}
+  .social .bubble{background:var(--mid2);border:1px solid var(--dim);border-radius:16px;padding:18px}
+  .social .who{font-family:var(--mono);font-size:12px;color:#9aa6d6;text-transform:uppercase;letter-spacing:1px}
+  @media(max-width:640px){.social .twomeanings{grid-template-columns:1fr}}
+  /* cta */
+  .cta{text-align:center;background:radial-gradient(600px 300px at 50% 0,rgba(61,220,132,.12),transparent 70%)}
+  .cta .steps{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:22px 0}
+  .cta .step{background:var(--mid2);border:1px solid var(--dim);border-radius:16px;padding:18px 22px;max-width:230px}
+  .cta .step .n{font-family:var(--mono);color:var(--green);font-weight:700}
+  .bigcta{display:inline-block;margin-top:18px;background:var(--green);color:#06210f;font-weight:800;
+    padding:16px 30px;border-radius:14px;text-decoration:none;font-size:18px}
+  footer{padding:40px 0 70px;text-align:center;color:#6b76a3;font-size:14px}
+  .secretline{cursor:help;border-bottom:1px dotted #6b76a3}
+  ::selection{background:var(--green);color:#06210f}
+</style>
+</head>
+<body>
+<div class="bgfx"></div>
+
+<!-- HERO -->
+<header class="hero wrap">
+  <span class="badge">Steganography, explained</span>
+  <!-- inline mascot so the hero always renders -->
+  <svg class="mascot glow" viewBox="0 0 800 700" xmlns="http://www.w3.org/2000/svg" aria-label="Steg the pixel-chameleon">
+    <defs><linearGradient id="cob" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs>
+    <g transform="translate(400,360)">
+      <path d="M -150,30 C -230,30 -250,-70 -180,-90 C -120,-105 -120,-30 -160,-25 C -185,-22 -185,-55 -165,-58" fill="none" stroke="url(#cob)" stroke-width="34" stroke-linecap="round"/>
+      <g fill="#3b82f6"><rect x="-250" y="-100" width="12" height="12" rx="2" opacity=".8"/><rect x="-275" y="-70" width="10" height="10" rx="2" opacity=".6"/><rect x="-262" y="-40" width="8" height="8" rx="2" opacity=".45"/><rect x="-290" y="-95" width="7" height="7" rx="2" opacity=".4"/></g>
+      <path d="M -40,95 q -18,55 -55,70" fill="none" stroke="#1d4ed8" stroke-width="26" stroke-linecap="round"/>
+      <path d="M 70,95 q 18,55 55,70" fill="none" stroke="#1d4ed8" stroke-width="26" stroke-linecap="round"/>
+      <path d="M -160,10 C -150,-90 -60,-150 30,-150 C 130,-150 195,-95 205,-30 C 212,15 175,70 150,95 C 90,150 -70,150 -120,110 C -160,80 -168,55 -160,10 Z" fill="url(#cob)"/>
+      <path d="M -120,75 C -60,140 90,140 145,90 C 110,120 -70,128 -120,75 Z" fill="#3b82f6" opacity=".55"/>
+      <path d="M -120,-150 l14,-18 l14,18 Z" fill="#5a0fc8"/><path d="M -78,-156 l14,-20 l14,20 Z" fill="#5a0fc8"/><path d="M -34,-160 l14,-22 l14,22 Z" fill="#5a0fc8"/><path d="M 12,-158 l14,-20 l14,20 Z" fill="#5a0fc8"/><path d="M 56,-152 l14,-18 l14,18 Z" fill="#5a0fc8"/>
+      <path d="M 150,-70 C 215,-80 270,-45 270,5 C 270,55 215,80 165,70 C 120,60 120,-55 150,-70 Z" fill="url(#cob)"/>
+      <ellipse cx="262" cy="22" rx="48" ry="34" fill="#1d4ed8"/>
+      <path d="M 225,38 q 45,28 80,6" fill="none" stroke="#0b1020" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="205" cy="-28" r="52" fill="url(#cob)"/><circle cx="205" cy="-28" r="36" fill="#f4f6ff"/>
+      <circle cx="218" cy="-24" r="18" fill="#3ddc84"/><circle cx="218" cy="-24" r="8" fill="#0b1020"/><circle cx="212" cy="-30" r="5" fill="#f4f6ff"/>
+      <g filter=""><rect x="-40" y="20" width="46" height="46" rx="8" fill="#3ddc84"/><circle cx="-17" cy="40" r="7" fill="#0b1020"/><rect x="-20" y="40" width="6" height="14" fill="#0b1020"/></g>
+    </g>
+  </svg>
+  <h1>Hidden in <span class="hl">Plain Sight</span></h1>
+  <p class="sub">There's a secret hiding in this page. You walked right past it. This is <b>steganography</b> — and you can try it yourself below.</p>
+  <div class="scrollcue">scroll to uncover it ↓</div>
+</header>
+
+<!-- WHAT IS IT -->
+<section class="wrap">
+  <span class="eyebrow">The big idea</span>
+  <h2>Two ways to keep a secret</h2>
+  <p class="lead">Most apps <b>lock</b> your message so nobody can read it. But a locked box still screams <i>"there's a secret here!"</i> Steganography does something sneakier: it hides the secret <b>inside something boring</b>, so nobody even looks.</p>
+  <div class="vs">
+    <div class="card">
+      <h3 class="lock">🔒 Cryptography</h3>
+      <div class="big">🔒➡️🔣</div>
+      <p>Scrambles the <b>meaning</b>. People can see there's a secret — they just can't read it. (A locked box everyone notices.)</p>
+    </div>
+    <div class="card">
+      <h3 class="hide">🦎 Steganography</h3>
+      <div class="big">🐱…🔍✨</div>
+      <p>Hides the <b>existence</b>. It looks like an ordinary photo or text. Nobody suspects a thing. (A secret in a disguise.)</p>
+    </div>
+  </div>
+  <p class="punch">Cryptography hides <span class="g">what</span> you say.<br/>Steganography hides <span class="g">that</span> you said anything.</p>
+</section>
+
+<!-- FOUR SPOTS -->
+<section class="wrap">
+  <span class="eyebrow">Where secrets hide</span>
+  <h2>Four hiding spots</h2>
+  <p class="lead">A secret can ride along inside almost anything digital. Here's the trick behind each one — then go try two of them for real.</p>
+  <div class="spots">
+    <img src="../images/metaphor-text.svg" alt="Text: invisible characters hide between the letters you can see." loading="lazy"/>
+    <img src="../images/metaphor-image.svg" alt="Image: change the last digit of each color value to hide a message invisibly." loading="lazy"/>
+    <img src="../images/metaphor-voice.svg" alt="Voice: hide a picture inside sound; the spectrogram reveals it." loading="lazy"/>
+    <img src="../images/metaphor-file.svg" alt="File: staple secret data after the file's official end marker." loading="lazy"/>
+  </div>
+</section>
+
+<!-- TEXT DEMO (REAL zero-width) -->
+<section class="wrap">
+  <span class="eyebrow">Try it · for real</span>
+  <h2>Hide a message inside normal text</h2>
+  <p class="lead">This uses <b>zero-width characters</b> — real letters that show up as nothing. Your secret gets tucked invisibly inside an innocent sentence. (This is exactly how Cipher's <b>Steg mode</b> works.)</p>
+  <div class="demo">
+    <span class="tag">📝 zero-width text steganography</span>
+    <h3>Encoder</h3>
+    <div class="hint">Type a cover sentence and a secret. We hide the secret invisibly inside the cover.</div>
+    <label for="coverT">Cover text (what people see)</label>
+    <input id="coverT" type="text" value="omg this cafe is so cute 😍☕" />
+    <label for="secretT">Secret message (hidden)</label>
+    <input id="secretT" type="text" value="meet me at 8 by the docks" />
+    <div class="row">
+      <button class="go" onclick="encodeZW()">Hide it →</button>
+      <button class="ghost" onclick="copyOut('zwOut')">Copy result</button>
+    </div>
+    <label>Result (looks totally normal — but it's carrying your secret)</label>
+    <div id="zwOut" class="out empty">your innocent-looking message appears here…</div>
+    <h3 style="margin-top:26px">Decoder</h3>
+    <div class="hint">Paste a message here (try pasting the result above) to pull the secret back out.</div>
+    <label for="decodeT">Paste suspicious text</label>
+    <textarea id="decodeT" placeholder="paste here…"></textarea>
+    <div class="row"><button onclick="decodeZW()">Reveal hidden message 🔍</button></div>
+    <div id="zwReveal" class="out empty">the hidden secret will appear here…</div>
+  </div>
+</section>
+
+<!-- IMAGE DEMO (REAL LSB) -->
+<section class="wrap">
+  <span class="eyebrow">Try it · for real</span>
+  <h2>Hide a message inside an image</h2>
+  <p class="lead">Every pixel is just numbers for Red, Green, Blue. We nudge the <b>last bit</b> of each — invisible to your eyes, but it spells out your message. Compare the two images: identical, right?</p>
+  <div class="demo">
+    <span class="tag">🖼️ least-significant-bit (LSB) steganography</span>
+    <label for="secretI">Secret message to bury in the pixels</label>
+    <input id="secretI" type="text" value="you found the secret layer 🦎" />
+    <div class="row">
+      <button class="go" onclick="hideInImage()">Hide in image →</button>
+      <button onclick="revealFromImage()">Reveal 🔍</button>
+      <button class="ghost" onclick="drawCover()">Reset image</button>
+    </div>
+    <div class="canvwrap">
+      <div><label>Original</label><canvas id="cOrig" width="300" height="300"></canvas></div>
+      <div><label>With hidden message (look identical?)</label><canvas id="cStego" width="300" height="300"></canvas></div>
+    </div>
+    <div id="imgReveal" class="out empty">decoded message will appear here…</div>
+  </div>
+</section>
+
+<!-- VOICE + FILE (concept + mini interaction) -->
+<section class="wrap">
+  <span class="eyebrow">Two more spots</span>
+  <h2>…and in voice &amp; files</h2>
+  <div class="facts">
+    <div class="fact">
+      <h3>🎧 A face in the noise</h3>
+      <p>Sound is samples too. Hide a message in the quietest parts — or hide a whole <b>picture</b> inside the sound. It plays like static, but the spectrogram (the sound's "x-ray") reveals it.</p>
+      <button class="ghost" style="margin-top:12px" onclick="toggleSpec()">Show the spectrogram 🔍</button>
+      <canvas id="specC" width="540" height="180" style="display:none"></canvas>
+    </div>
+    <div class="fact">
+      <h3>📁 The secret pocket</h3>
+      <p>Every file has an official "THE END." Apps stop reading there — so you can staple secret data right after it. A single file can be a meme <b>and</b> secretly a zip full of files.</p>
+      <pre style="margin-top:12px;background:#0c1430;border:1px solid var(--dim);border-radius:12px;padding:14px;font-family:var(--mono);font-size:13px;color:#c3cbf0;overflow:auto">meme.jpg ──► [ image data ] [ END ]<span style="color:var(--green)">[ secret.zip ]</span>
+                 app stops here ↑   still there ↑</pre>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL STEG -->
+<section class="wrap">
+  <div class="social">
+    <span class="eyebrow">Plot twist</span>
+    <h2>You already do this</h2>
+    <p class="lead" style="margin:0 auto">Post a song lyric. To one person it's just a song. To another, it means everything. You're not hiding the words — you're hiding the <b>meaning</b>, in plain sight. That's steganography too.</p>
+    <div class="twomeanings">
+      <div class="bubble"><div class="who">what mom sees</div><p>"aww, nice song 🎵"</p></div>
+      <div class="bubble"><div class="who">what your best friend sees</div><p>"…are you okay?? 💔 call me"</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WOW FACTS -->
+<section class="wrap">
+  <span class="eyebrow">Wait, what</span>
+  <h2>Secrets are everywhere</h2>
+  <div class="facts">
+    <div class="fact"><h3>🖨️ Your printer is a snitch</h3><p>Most color printers stamp every page with near-invisible yellow dots — encoding the printer's serial number and the date. You've been signing your printouts for decades.</p></div>
+    <div class="fact"><h3>🤖 AI images have invisible tattoos</h3><p>AI-generated images often carry a hidden watermark baked into the pixels (like Google's SynthID) — invisible to you, survives screenshots and crops.</p></div>
+    <div class="fact"><h3>🐛 "It's just a picture" — not always</h3><p>Hackers have hidden real malware inside ordinary images. One attack stashed stolen credit-card numbers inside a store's own product photos.</p></div>
+    <div class="fact"><h3>🏛️ Older than computers</h3><p>2,500 years ago a Greek ruler tattooed a message on a slave's shaved head, waited for the hair to grow back, and sent him as a "blank" messenger.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="wrap cta">
+  <span class="eyebrow">Do it for real</span>
+  <h2>Meet Cipher</h2>
+  <p class="lead" style="margin:0 auto">You just hid messages in text and images. Cipher does it on your phone — and it does the <b>other</b> half too: it <b>locks</b> your message <i>and</i> <b>hides</b> it, so you can paste it into any chat and it looks like nothing.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01 · lock</div>AES-256 scrambles your message so the meaning is unreadable.</div>
+    <div class="step"><div class="n">02 · hide</div>Steg mode tucks it into invisible characters / emoji / innocent text.</div>
+    <div class="step"><div class="n">03 · paste</div>Drop it into WhatsApp or Telegram. The servers see nothing.</div>
+  </div>
+  <a class="bigcta glow" href="https://cmos-jumper.github.io/Cipher/" target="_blank" rel="noopener">Get Cipher — hide in plain sight →</a>
+  <p style="margin-top:14px;color:#6b76a3;font-size:14px">offline · on-device · open source · 🦎</p>
+</section>
+
+<footer class="wrap">
+  <p>Made for curious humans by <b>Cipher</b>. ·
+  <span class="secretline" title="🦎 you found me. there's a real hidden message in this page — open the console, or use the decoder above on this very paragraph.">psst… there's a secret on this page.</span></p>
+  <p style="margin-top:8px;opacity:.6">Steganography is a tool — for privacy and creativity, and sometimes mischief. Now you know the hidden layer is there.</p>
+</footer>
+
+<script>
+// ---------- Zero-width text steganography (real) ----------
+const ZERO='​', ONE='‌', SEP='‍'; // ZWSP=0, ZWNJ=1, ZWJ=delimiter
+function textToBits(str){
+  return Array.from(new TextEncoder().encode(str)).map(b=>b.toString(2).padStart(8,'0')).join('');
+}
+function bitsToText(bits){
+  const bytes=[]; for(let i=0;i+8<=bits.length;i+=8) bytes.push(parseInt(bits.slice(i,i+8),2));
+  try{return new TextDecoder().decode(new Uint8Array(bytes));}catch(e){return '(could not decode)';}
+}
+function encodeZW(){
+  const cover=document.getElementById('coverT').value;
+  const secret=document.getElementById('secretT').value;
+  if(!secret){flash('zwOut','type a secret first');return;}
+  const hidden=textToBits(secret).split('').map(b=>b==='0'?ZERO:ONE).join('')+SEP;
+  // insert the invisible payload after the first character of the cover
+  const out=cover.slice(0,1)+hidden+cover.slice(1);
+  const el=document.getElementById('zwOut'); el.classList.remove('empty');
+  el.textContent=out;
+  el.insertAdjacentHTML('beforeend','<div style="color:#6b76a3;font-size:12px;margin-top:8px">↑ '+out.length+' characters — but only '+cover.length+' are visible. The rest are invisible. Copy it and paste into the decoder, or into any chat app.</div>');
+}
+function decodeZW(){
+  const txt=document.getElementById('decodeT').value;
+  const only=Array.from(txt).filter(c=>c===ZERO||c===ONE||c===SEP);
+  const payload=only.join('').split(SEP)[0];
+  const el=document.getElementById('zwReveal'); el.classList.remove('empty');
+  if(!payload){el.textContent='No hidden message found (no zero-width characters here).';return;}
+  const bits=Array.from(payload).map(c=>c===ZERO?'0':'1').join('');
+  el.textContent='🦎 revealed: '+bitsToText(bits);
+}
+function copyOut(id){
+  const t=document.getElementById(id).textContent;
+  navigator.clipboard?.writeText(t).then(()=>flashNote(id,'copied!'),()=>{});
+}
+function flash(id,msg){const el=document.getElementById(id);el.classList.remove('empty');el.textContent=msg;}
+function flashNote(id,msg){const el=document.getElementById(id);const n=document.createElement('div');n.style.cssText='color:#3ddc84;font-size:12px;margin-top:6px';n.textContent=msg;el.appendChild(n);setTimeout(()=>n.remove(),1500);}
+
+// ---------- Image LSB steganography (real, on canvas) ----------
+const cOrig=document.getElementById('cOrig'), cStego=document.getElementById('cStego');
+function drawCover(){
+  for(const c of [cOrig,cStego]){
+    const x=c.getContext('2d'); const g=x.createLinearGradient(0,0,300,300);
+    g.addColorStop(0,'#2563eb'); g.addColorStop(.5,'#5a0fc8'); g.addColorStop(1,'#0b1020');
+    x.fillStyle=g; x.fillRect(0,0,300,300);
+    // some shapes so it looks like a real picture
+    x.fillStyle='rgba(61,220,132,.85)'; x.beginPath(); x.arc(210,90,46,0,7); x.fill();
+    x.fillStyle='rgba(255,255,255,.1)'; for(let i=0;i<40;i++){x.fillRect(Math.random()*300,Math.random()*300,4,4);}
+    x.fillStyle='#f4f6ff'; x.font='bold 20px Poppins,sans-serif'; x.fillText('a normal picture',40,260);
+  }
+  document.getElementById('imgReveal').className='out empty';
+  document.getElementById('imgReveal').textContent='decoded message will appear here…';
+}
+function hideInImage(){
+  drawCover();
+  const msg=document.getElementById('secretI').value||' ';
+  const x=cStego.getContext('2d'); const img=x.getImageData(0,0,300,300); const d=img.data;
+  const bytes=new TextEncoder().encode(msg);
+  // header: 16 bits length, then bytes
+  let bits=bytes.length.toString(2).padStart(16,'0');
+  bits+=Array.from(bytes).map(b=>b.toString(2).padStart(8,'0')).join('');
+  let bi=0;
+  for(let i=0;i<d.length && bi<bits.length;i+=4){ // R channel only, skip alpha
+    d[i]=(d[i]&0xFE)|(+bits[bi]); bi++;
+  }
+  x.putImageData(img,0,0);
+  flash('imgReveal','✅ hidden! '+bytes.length+' bytes buried in the last bit of '+bits.length+' pixels. The two images are pixel-near-identical.');
+  document.getElementById('imgReveal').className='out';
+}
+function revealFromImage(){
+  const x=cStego.getContext('2d'); const d=x.getImageData(0,0,300,300).data;
+  let bits=''; for(let i=0;i<d.length;i+=4) bits+=(d[i]&1);
+  const len=parseInt(bits.slice(0,16),2);
+  if(!len||len>2000){flash('imgReveal','No message found — hide one first, then reveal.');return;}
+  const body=bits.slice(16,16+len*8); const bytes=[];
+  for(let i=0;i+8<=body.length;i+=8) bytes.push(parseInt(body.slice(i,i+8),2));
+  const el=document.getElementById('imgReveal'); el.className='out';
+  try{el.textContent='🦎 revealed from pixels: '+new TextDecoder().decode(new Uint8Array(bytes));}
+  catch(e){el.textContent='(decode error)';}
+}
+drawCover();
+
+// ---------- Spectrogram reveal (concept visual) ----------
+let specShown=false;
+function toggleSpec(){
+  const c=document.getElementById('specC'); specShown=!specShown;
+  c.style.display=specShown?'block':'none'; if(!specShown)return;
+  const x=c.getContext('2d'); x.fillStyle='#0c1430'; x.fillRect(0,0,540,180);
+  for(let i=0;i<1400;i++){x.fillStyle='rgba(90,15,200,'+(Math.random()*0.4)+')';x.fillRect(Math.random()*540,Math.random()*180,3,3);}
+  // hidden word drawn in green "frequencies"
+  x.fillStyle='#0c1430';x.fillRect(0,0,0,0);
+  x.strokeStyle='#3ddc84';x.lineWidth=6;x.font='900 70px Poppins,sans-serif';
+  x.fillStyle='#3ddc84';x.shadowColor='#3ddc84';x.shadowBlur=12;
+  x.textAlign='center';x.fillText('HELLO',270,115);x.shadowBlur=0;
+}
+
+// ---------- the page's own hidden message (meta easter egg) ----------
+console.log('%c🦎 Hidden in plain sight','color:#3ddc84;font-size:20px;font-weight:bold');
+const _pageSecret='Q0lQSEVS'; // base64
+console.log('%cA secret was hidden on this page. Decode this → atob("'+_pageSecret+'")','color:#3b82f6');
+console.log('%cHint: it spells the name of the app that does this for real. 🔒+🦎','color:#9aa6d6');
+</script>
+</body>
+</html>
