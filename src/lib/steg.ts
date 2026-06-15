@@ -67,5 +67,16 @@ export function decodeSteg(text: string): string {
 }
 
 export function isSteg(text: string): boolean {
-  return text.includes(ZERO_0) || text.includes(ZERO_1);
+  // Require a contiguous run of >= 8 zero-width chars (1 decodable byte), matching
+  // decodeSteg's longest-run extraction — so isolated ZWNJ/ZWSP in cover text
+  // (Persian "می‌رود") don't false-trigger the decrypt path.
+  let run = 0;
+  for (const ch of text) {
+    if (ch === ZERO_0 || ch === ZERO_1) {
+      if (++run >= 8) return true;
+    } else {
+      run = 0;
+    }
+  }
+  return false;
 }

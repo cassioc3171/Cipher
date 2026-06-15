@@ -1,6 +1,6 @@
 {
   "appName": "Cipher",
-  "tagline": "Military-grade encryption in your browser.",
+  "tagline": "Military-grade encryption on your device.",
   "common": {
     "cancel": "Cancel",
     "close": "Close",
@@ -39,7 +39,7 @@
   "sidebar": {
     "sessions": "Sessions",
     "noSessionsYet": "Start encrypting to create a session.",
-    "endToEndNotice": "End-to-end · Browser-local only",
+    "endToEndNotice": "End-to-end · On-device only",
     "eraseAllData": "Erase all data",
     "closeSidebar": "Close sidebar",
     "openSidebar": "Open sidebar",
@@ -130,11 +130,11 @@
     "restoring": "Restoring your secure session…",
     "warningTitle": "Warning",
     "warningTitleEmoji": "⚠️ Warning",
-    "warningBody": "Setting an app password will encrypt all your local data on this browser.",
+    "warningBody": "Setting an app password will encrypt all your local data on this device.",
     "warningBodyStrong": "If you forget this password, all data will be lost forever and cannot be recovered.",
     "iUnderstand": "I Understand",
     "setAppPassword": "Set App Password",
-    "setupExplain": "This password encrypts all local data for this browser session.",
+    "setupExplain": "This password encrypts all local data on this device.",
     "setPassword": "Set Password",
     "settingUp": "Setting up…",
     "changeAppPassword": "Change App Password",
@@ -147,7 +147,7 @@
     "changeExplain": "Re-encrypts all saved secrets with the new app password.",
     "removeWarnPrefix": "All secrets will be stored",
     "removeWarnEmphasis": "unencrypted",
-    "removeWarnSuffix": "in your browser. This cannot be undone.",
+    "removeWarnSuffix": "on your device. This cannot be undone.",
     "changedToast": "App password changed.",
     "removedToast": "App password removed.",
     "modalUnlockChatLabel": "Unlock chat password",
@@ -242,7 +242,7 @@
   "welcome": {
     "body": "Type a message and encrypt it. A new session will be created automatically.",
     "tempTitle": "Temporary chat",
-    "tempBody": "This chat won't be saved. It will disappear when you refresh or close the page.",
+    "tempBody": "This chat won't be saved. It will disappear when you close the app.",
     "ephemeralBanner": "Temporary chat — nothing is saved. This session will disappear on refresh."
   },
   "settings": {
@@ -314,7 +314,7 @@
   },
   "erase": {
     "title": "Erase all data?",
-    "body": "This will permanently delete all your chats, keys, and encrypted data from this browser. This action cannot be undone.",
+    "body": "This will permanently delete all your chats, keys, and encrypted data from this device. This action cannot be undone.",
     "sureTitle": "Are you absolutely sure?",
     "sureBody": "You are about to delete {{chatCount}} containing {{msgCount}}, all encryption keys, and all locally stored data. There is no recovery.",
     "chats_one": "{{count}} chat",
@@ -325,7 +325,7 @@
   },
   "deleteChat": {
     "title": "Delete this chat?",
-    "body": "\"{{name}}\" and all of its {{msgCount}} will be permanently removed from this browser. This cannot be undone.",
+    "body": "\"{{name}}\" and all of its {{msgCount}} will be permanently removed from this device. This cannot be undone.",
     "confirm": "Delete chat"
   },
   "tutorial": {
@@ -450,7 +450,7 @@
           },
           "acknowledgeWarning": {
             "title": "Read the warning",
-            "body": "Tap I Understand. Setting an app password encrypts every chat, key, and obfuscation setting on this browser. If you forget the password later, you cannot recover the data."
+            "body": "Tap I Understand. Setting an app password encrypts every chat, key, and obfuscation setting on this device. If you forget the password later, you cannot recover the data."
           },
           "typeNewPassword": {
             "title": "Pick a strong password",
@@ -458,7 +458,7 @@
           },
           "pressSave": {
             "title": "Save — this is real",
-            "body": "Tap Set Password. From now on this browser asks for the app password on every visit. You can change or remove it later from Settings → App Password."
+            "body": "Tap Set Password. From now on, the app asks for the app password each time you open it. You can change or remove it later from Settings → App Password."
           }
         }
       },
@@ -647,15 +647,15 @@
       },
       "security": {
         "title": "Security",
-        "body": "Cipher is open-source under the MIT license — anyone can read the code and verify it does what it claims. It runs entirely in your browser: no account, no server, no logs. After the first load it works fully offline — you can disable your network and Cipher keeps encrypting. Encryption is AES-256-GCM with PBKDF2-SHA256 key derivation (600,000 iterations, well above OWASP minimum). The optional app password additionally encrypts everything saved locally. Without that password, the stored data is unrecoverable — by you, by anyone."
+        "body": "Cipher is open-source under the MIT license — anyone can read the code and verify it does what it claims. It runs entirely on your device: no account, no server, no logs. It works fully offline — you can disable your network and Cipher keeps encrypting. Encryption is AES-256-GCM with PBKDF2-SHA256 key derivation (600,000 iterations, well above OWASP minimum). The optional app password additionally encrypts everything saved locally. Without that password, the stored data is unrecoverable — by you, by anyone."
       },
       "faq": {
         "title": "FAQ",
         "items": {
           "q1": "Where is my data stored?",
-          "a1": "In your browser only. Nothing is sent anywhere.",
+          "a1": "On your device only. Nothing is sent anywhere.",
           "q2": "Does Cipher need the internet?",
-          "a2": "No. After the first load it works fully offline.",
+          "a2": "No. It works fully offline.",
           "q3": "What if I forget my app password?",
           "a3": "The stored data is gone forever. There is no recovery.",
           "q4": "Can someone read intercepted ciphertext?",
@@ -663,7 +663,7 @@
           "q5": "Is Cipher really open source?",
           "a5": "Yes. MIT license. Read or audit the code on GitHub.",
           "q6": "Does it work on phones?",
-          "a6": "Yes. Install it as a PWA from any modern browser.",
+          "a6": "Yes — there's an Android app, and it also runs as a web app in any modern browser.",
           "q7": "Why so many obfuscation modes?",
           "a7": "Different channels strip different content. Pick one that survives yours.",
           "q8": "Can I send files, images, or voice?",
